@@ -59,12 +59,6 @@
 			<!-- <version>1.4.7.RELEASE</version> -->
 			<scope>test</scope>
 		</dependency>
-		<!-- 引用Commons项目中的类 -->
-		<dependency>
-			<groupId>com.hzit.hitao_cloud</groupId>
-			<artifactId>hitao_commons</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 		<!-- springboot的热部署插件 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

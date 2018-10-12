@@ -9,10 +9,16 @@
 	</parent>
 	<artifactId>hitao_gatway</artifactId>
 	<dependencies>
-	<!-- zuul网关 -->
-	<dependency>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-starter-zuul</artifactId>
-	</dependency>
+		<!-- zuul网关 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-zuul</artifactId>
+		</dependency>
+		<!-- 引用Commons项目中的类 -->
+		<dependency>
+			<groupId>com.hzit.hitao_cloud</groupId>
+			<artifactId>hitao_commons</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>
