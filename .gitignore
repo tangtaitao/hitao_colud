@@ -1,2 +1,3 @@
 .settings
 .project
+/hitao_authc/src/main/resources/application.properties
