@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.ShopTransportMapper">
+	<!--shop_transport表中的列 -->
+	<sql id="shopTransportBaseColumn">
+		id,
+		title,
+		send_tpl_id,
+		is_del,
+		created_time,
+		updated_time
+	</sql>
+
+
+	<!--添加 -->
+	<insert id="addShopTransport"
+		parameterType="com.hzitxx.hitao.entity.ShopTransport">
+		insert into
+		shop_transport(title,send_tpl_id,is_del,created_time)
+		values(#{title},#{sendTplId},0,#{createdTime})
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_transport
+		WHERE
+		id = #{id}
+	</delete>
+	<!--根据id修改数据（包括逻辑删除） -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopTransport">
+		UPDATE shop_transport
+		<set>
+			<if test="title!=null">
+				title=#{title},
+			</if>
+			<if test="sendTplId!=null">
+				send_tpl_id=#{sendTplId},
+			</if>
+			<if test="isDel!=null">
+				is_del=#{isDel},
+			</if>
+			<if test="updatedTime!=null">
+				updated_time=#{updatedTime}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	<!--根据id查询一条数据 -->
+	<select id="findOne" resultMap="shopTransportMap"
+		parameterType="integer">
+		select
+		<include refid="shopTransportBaseColumn" />
+		from
+		shop_transport
+		WHERE
+		id = #{id}
+	</select>
+	<!--查询数据 -->
+	<select id="searchShopTransport" parameterType="map"
+		resultMap="shopTransportMap">
+		SELECT
+		<include refid="shopTransportBaseColumn" />
+		FROM shop_transport
+		<where>
+			<if test="id !=null">
+				AND id = #{id}
+			</if>
+			<if test="title !=null">
+				AND title = #{title}
+			</if>
+			<if test="sendTplId !=null">
+				AND send_tpl_id = #{sendTplId}
+			</if>
+			<if test="isDel !=null">
+				AND is_del = #{isDel}
+			</if>
+			<if test="createdTime !=null">
+				AND created_time = #{createdTime}
+			</if>
+			<if test="updatedTime !=null">
+				AND updated_time = #{updatedTime}
+			</if>
+		</where>
+	</select>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopTransportMap"
+		type="com.hzitxx.hitao.entity.ShopTransport">
+		<id column="id" property="id" />
+		<result column="title" property="title" />
+		<result column="send_tpl_id" property="sendTplId" />
+		<result column="is_del" property="isDel" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+</mapper>

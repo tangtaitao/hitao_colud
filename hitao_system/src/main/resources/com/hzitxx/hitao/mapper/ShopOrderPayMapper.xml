@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.ShopOrderPayMapper">
+	<!--shop_order_pay表中的列 -->
+	<sql id="shopOrderPayBaseColumn">
+		pay_id,
+		pay_sn,
+		buyer_id,
+		api_pay_state
+	</sql>
+
+	<!-- 添加一条数据 -->
+	<insert id="addShopOrderPay"
+		parameterType="com.hzitxx.hitao.entity.ShopOrderPay">
+		INSERT INTO shop_order_pay(
+		<include refid="shopOrderPayBaseColumn" />
+		) VALUES(
+		null,
+		#{paySn},
+		#{buyerId},
+		#{apiPayState}
+		)
+	</insert>
+
+	<!-- 根据id删除一条数据 -->
+	<delete id="deleteById" parameterType="Integer">
+		DELETE FROM shop_order_pay
+		WHERE
+		pay_id = #{payId}
+	</delete>
+
+	<!-- 根据id更新信息 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopOrderPay">
+		UPDATE shop_order_pay
+		<set>
+			pay_sn=#{paySn},
+			buyer_id=#{buyerId},
+			api_pay_state=#{apiPayState}
+		</set>
+		WHERE
+		pay_id = #{payId}
+	</update>
+
+	<!-- 根据id查询一条信息 -->
+	<select id="findOne" resultMap="shopOrderPayMap"
+		parameterType="Integer">
+		select
+		<include refid="shopOrderPayBaseColumn" />
+		from
+		shop_order_pay
+		WHERE
+		pay_id = #{payId}
+	</select>
+
+	<!-- 搜索数据 -->
+	<select id="searchShopOrderPay" resultMap="shopOrderPayMap"
+		parameterType="map">
+		SELECT
+		<include refid="shopOrderPayBaseColumn" />
+		FROM shop_order_pay
+		<where>
+			<if test="payId !=null">
+				AND pay_id = #{payId}
+			</if>
+			<if test="paySn !=null">
+				AND pay_sn = #{paySn}
+			</if>
+			<if test="buyerId !=null">
+				AND buyer_id = #{buyerId}
+			</if>
+			<if test="apiPayState !=null">
+				AND api_pay_state = #{apiPayState}
+			</if>
+		</where>
+	</select>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopOrderPayMap"
+		type="com.hzitxx.hitao.entity.ShopOrderPay">
+		<id column="pay_id" property="payId" />
+		<result column="pay_sn" property="paySn" />
+		<result column="buyer_id" property="buyerId" />
+		<result column="api_pay_state" property="apiPayState" />
+	</resultMap>
+</mapper>
