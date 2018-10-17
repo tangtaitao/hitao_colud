@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.shopgoods.ShopGoodsContentMapper">
+	<!--shop_goods_content表中的列 -->
+	<sql id="shopGoodsContentBaseColumn">
+		goods_id,
+		content,
+		created_time,
+		updated_time
+	</sql>
+	<!--添加 -->
+	<insert id="addShopGoodsContent"
+		parameterType="com.hzitxx.hitao.entity.ShopGoodsContent">
+		insert into shop_goods_content
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null">
+				goods_id,
+			</if>
+			<if test="content != null">
+				content,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="goodsId != null">
+				#{goodsId},
+			</if>
+			<if test="content != null">
+				#{content},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime},
+			</if>
+		</trim>
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM
+		shop_goods_content WHERE
+		goods_id = #{goodsId}
+	</delete>
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopGoodsContent">
+		UPDATE shop_goods_content
+		<set>
+			<if test="goodsId != null">
+				goods_id = #{goodsId},
+			</if>
+			<if test="content != null">
+				content = #{content},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime},
+			</if>
+		</set>
+		WHERE
+		goods_id = #{goodsId}
+	</update>
+	<!--查询数据 -->
+	<select id="selectShopGoodsContent" parameterType="map"
+		resultMap="shopGoodsContentMap">
+		SELECT
+		<include refid="shopGoodsContentBaseColumn" />
+		FROM shop_goods_content
+		<include refid="shopGoodsContentBaseWhereSql" />
+	</select>
+	<!--基础查询条件 -->
+	<sql id="shopGoodsContentBaseWhereSql">
+			<where>
+				<if test="goodsId !=null">
+					AND goods_id = #{goodsId}
+				</if>
+				<if test="content !=null">
+					AND content = #{content}
+				</if>
+				<if test="createdTime !=null">
+					AND created_time = #{createdTime}
+				</if>
+				<if test="updatedTime !=null">
+					AND updated_time = #{updatedTime}
+				</if>
+			</where>
+	</sql>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopGoodsContentMap"
+		type="com.hzitxx.hitao.entity.ShopGoodsContent">
+		<id column="goods_id" property="goodsId" />
+		<result column="content" property="content" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+</mapper>

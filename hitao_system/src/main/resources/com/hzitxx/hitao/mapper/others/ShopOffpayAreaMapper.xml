@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.others.ShopOffpayAreaMapper">
+	<!--shop_offpay_area表中的列 -->
+	<sql id="shopOffpayAreaBaseColumn">
+		area_id,
+		is_del,
+		created_time,
+		updated_time
+	</sql>
+	<!--添加 -->
+	<insert id="addShopOffpayArea"
+		parameterType="com.hzitxx.hitao.entity.ShopOffpayArea">
+		insert into shop_offpay_area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="areaId != null">
+				area_id,
+			</if>
+			<if test="isDel != null">
+				is_del,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="areaId != null">
+				#{areaId},
+			</if>
+			<if test="isDel != null">
+				#{isDel},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime},
+			</if>
+		</trim>
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM
+		shop_offpay_area WHERE area_id = #{areaId}
+	</delete>
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopOffpayArea">
+		UPDATE shop_offpay_area
+		<set>
+			<if test="isDel != null">
+				is_del = #{isDel},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime},
+			</if>
+		</set>
+		WHERE area_id = #{areaId}
+	</update>
+	<!--查询数据 -->
+	<select id="selectShopOffpayArea" parameterType="map"
+		resultMap="shopOffpayAreaMap">
+		SELECT
+		<include refid="shopOffpayAreaBaseColumn" />
+		FROM shop_offpay_area
+		<include refid="shopOffpayAreaBaseWhereSql" />
+	</select>
+	<!--基础查询条件 -->
+	<sql id="shopOffpayAreaBaseWhereSql">
+			<where>
+				<if test="areaId !=null">
+					AND area_id = #{areaId}
+				</if>
+				<if test="isDel !=null">
+					AND is_del = #{isDel}
+				</if>
+				<if test="createdTime !=null">
+					AND created_time = #{createdTime}
+				</if>
+				<if test="updatedTime !=null">
+					AND updated_time = #{updatedTime}
+				</if>
+			</where>
+	</sql>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopOffpayAreaMap"
+		type="com.hzitxx.hitao.entity.ShopOffpayArea">
+		<result column="area_id" property="areaId" />
+		<result column="is_del" property="isDel" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+</mapper>

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.others.ShopMessageMapper">
+	<!--shop_message表中的列 -->
+	<sql id="shopMessageBaseColumn">
+		message_id,
+		message_parent_id,
+		from_member_id,
+		from_member_name,
+		to_member_id,
+		to_member_name,
+		message_title,
+		message_body,
+		message_time,
+		message_update_time,
+		message_open,
+		message_state,
+		message_type,
+		read_member_id,
+		del_member_id,
+		message_ismore
+	</sql>
+
+
+	<!--添加 -->
+	<insert id="addShopMessage"
+		parameterType="com.hzitxx.hitao.entity.ShopMessage">
+		insert into shop_message
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="messageId != null">
+				message_id,
+			</if>
+			<if test="messageParentId != null">
+				message_parent_id,
+			</if>
+			<if test="fromMemberId != null">
+				from_member_id,
+			</if>
+			<if test="fromMemberName != null">
+				from_member_name,
+			</if>
+			<if test="toMemberId != null">
+				to_member_id,
+			</if>
+			<if test="toMemberName != null">
+				to_member_name,
+			</if>
+			<if test="messageTitle != null">
+				message_title,
+			</if>
+			<if test="messageBody != null">
+				message_body,
+			</if>
+			<if test="messageTime != null">
+				message_time,
+			</if>
+			<if test="messageUpdateTime != null">
+				message_update_time,
+			</if>
+			<if test="messageOpen != null">
+				message_open,
+			</if>
+			<if test="messageState != null">
+				message_state,
+			</if>
+			<if test="messageType != null">
+				message_type,
+			</if>
+			<if test="readMemberId != null">
+				read_member_id,
+			</if>
+			<if test="delMemberId != null">
+				del_member_id,
+			</if>
+			<if test="messageIsmore != null">
+				message_ismore,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="messageId != null">
+				#{messageId},
+			</if>
+			<if test="messageParentId != null">
+				#{messageParentId},
+			</if>
+			<if test="fromMemberId != null">
+				#{fromMemberId},
+			</if>
+			<if test="fromMemberName != null">
+				#{fromMemberName},
+			</if>
+			<if test="toMemberId != null">
+				#{toMemberId},
+			</if>
+			<if test="toMemberName != null">
+				#{toMemberName},
+			</if>
+			<if test="messageTitle != null">
+				#{messageTitle},
+			</if>
+			<if test="messageBody != null">
+				#{messageBody},
+			</if>
+			<if test="messageTime != null">
+				#{messageTime},
+			</if>
+			<if test="messageUpdateTime != null">
+				#{messageUpdateTime},
+			</if>
+			<if test="messageOpen != null">
+				#{messageOpen},
+			</if>
+			<if test="messageState != null">
+				#{messageState},
+			</if>
+			<if test="messageType != null">
+				#{messageType},
+			</if>
+			<if test="readMemberId != null">
+				#{readMemberId},
+			</if>
+			<if test="delMemberId != null">
+				#{delMemberId},
+			</if>
+			<if test="messageIsmore != null">
+				#{messageIsmore},
+			</if>
+		</trim>
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_message WHERE
+		message_id = #{messageId}
+	</delete>
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopMessage">
+		UPDATE shop_message
+		<set>
+			<if test="messageId != null">
+				message_id = #{messageId},
+			</if>
+			<if test="messageParentId != null">
+				message_parent_id = #{messageParentId},
+			</if>
+			<if test="fromMemberId != null">
+				from_member_id = #{fromMemberId},
+			</if>
+			<if test="fromMemberName != null">
+				from_member_name = #{fromMemberName},
+			</if>
+			<if test="toMemberId != null">
+				to_member_id = #{toMemberId},
+			</if>
+			<if test="toMemberName != null">
+				to_member_name = #{toMemberName},
+			</if>
+			<if test="messageTitle != null">
+				message_title = #{messageTitle},
+			</if>
+			<if test="messageBody != null">
+				message_body = #{messageBody},
+			</if>
+			<if test="messageTime != null">
+				message_time = #{messageTime},
+			</if>
+			<if test="messageUpdateTime != null">
+				message_update_time = #{messageUpdateTime},
+			</if>
+			<if test="messageOpen != null">
+				message_open = #{messageOpen},
+			</if>
+			<if test="messageState != null">
+				message_state = #{messageState},
+			</if>
+			<if test="messageType != null">
+				message_type = #{messageType},
+			</if>
+			<if test="readMemberId != null">
+				read_member_id = #{readMemberId},
+			</if>
+			<if test="delMemberId != null">
+				del_member_id = #{delMemberId},
+			</if>
+			<if test="messageIsmore != null">
+				message_ismore = #{messageIsmore},
+			</if>
+		</set>
+		WHERE
+		message_id = #{messageId}
+	</update>
+	<!--查询数据 -->
+	<select id="selectShopMessage" parameterType="map"
+		resultMap="shopMessageMap">
+		SELECT
+		<include refid="shopMessageBaseColumn" />
+		FROM shop_message
+		<include refid="shopMessageBaseWhereSql" />
+	</select>
+	<!--基础查询条件 -->
+	<sql id="shopMessageBaseWhereSql">
+			<where>
+				<if test="messageId !=null">
+					AND message_id = #{messageId}
+				</if>
+				<if test="messageParentId !=null">
+					AND message_parent_id = #{messageParentId}
+				</if>
+				<if test="fromMemberId !=null">
+					AND from_member_id = #{fromMemberId}
+				</if>
+				<if test="fromMemberName !=null">
+					AND from_member_name = #{fromMemberName}
+				</if>
+				<if test="toMemberId !=null">
+					AND to_member_id = #{toMemberId}
+				</if>
+				<if test="toMemberName !=null">
+					AND to_member_name = #{toMemberName}
+				</if>
+				<if test="messageTitle !=null">
+					AND message_title = #{messageTitle}
+				</if>
+				<if test="messageBody !=null">
+					AND message_body = #{messageBody}
+				</if>
+				<if test="messageTime !=null">
+					AND message_time = #{messageTime}
+				</if>
+				<if test="messageUpdateTime !=null">
+					AND message_update_time = #{messageUpdateTime}
+				</if>
+				<if test="messageOpen !=null">
+					AND message_open = #{messageOpen}
+				</if>
+				<if test="messageState !=null">
+					AND message_state = #{messageState}
+				</if>
+				<if test="messageType !=null">
+					AND message_type = #{messageType}
+				</if>
+				<if test="readMemberId !=null">
+					AND read_member_id = #{readMemberId}
+				</if>
+				<if test="delMemberId !=null">
+					AND del_member_id = #{delMemberId}
+				</if>
+				<if test="messageIsmore !=null">
+					AND message_ismore = #{messageIsmore}
+				</if>
+			</where>
+	</sql>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopMessageMap"
+		type="com.hzitxx.hitao.entity.ShopMessage">
+		<id column="message_id" property="messageId" />
+		<result column="message_parent_id" property="messageParentId" />
+		<result column="from_member_id" property="fromMemberId" />
+		<result column="from_member_name" property="fromMemberName" />
+		<result column="to_member_id" property="toMemberId" />
+		<result column="to_member_name" property="toMemberName" />
+		<result column="message_title" property="messageTitle" />
+		<result column="message_body" property="messageBody" />
+		<result column="message_time" property="messageTime" />
+		<result column="message_update_time"
+			property="messageUpdateTime" />
+		<result column="message_open" property="messageOpen" />
+		<result column="message_state" property="messageState" />
+		<result column="message_type" property="messageType" />
+		<result column="read_member_id" property="readMemberId" />
+		<result column="del_member_id" property="delMemberId" />
+		<result column="message_ismore" property="messageIsmore" />
+	</resultMap>
+</mapper>
