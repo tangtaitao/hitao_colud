@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.marketing.ShopAdvPositionMapper">
+	<!--shop_adv_position表中的列 -->
+	<sql id="shopAdvPositionBaseColumn">
+		ap_id,
+		ap_name,
+		ap_intro,
+		ap_class,
+		ap_display,
+		is_use,
+		ap_width,
+		ap_height,
+		ap_price,
+		adv_num,
+		click_num,
+		default_content
+	</sql>
+
+	<!--添加 -->
+	<insert id="addShopAdvPosition"
+		parameterType="com.hzitxx.hitao.entity.ShopAdvPosition">
+		INSERT INTO shop_adv_position(
+		<include refid="shopAdvPositionBaseColumn" />
+		) VALUES(
+		null,
+		#{apName},
+		#{apIntro},
+		#{apClass},
+		#{apDisplay},
+		#{isUse},
+		#{apWidth},
+		#{apHeight},
+		#{apPrice},
+		#{advNum},
+		#{clickNum},
+		#{defaultContent}
+		)
+	</insert>
+
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM
+		shop_adv_position WHERE
+		ap_id = #{apId}
+	</delete>
+
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopAdvPosition">
+		UPDATE shop_adv_position
+		<set>
+			<if test="apName != null">
+				ap_name = #{apName},
+			</if>
+			<if test="apIntro != null">
+				ap_intro = #{apIntro},
+			</if>
+			<if test="apClass != null">
+				ap_class = #{apClass},
+			</if>
+			<if test="apDisplay != null">
+				ap_display = #{apDisplay},
+			</if>
+			<if test="isUse != null">
+				is_use = #{isUse},
+			</if>
+			<if test="apWidth != null">
+				ap_width = #{apWidth},
+			</if>
+			<if test="apHeight != null">
+				ap_height = #{apHeight},
+			</if>
+			<if test="apPrice != null">
+				ap_price = #{apPrice},
+			</if>
+			<if test="advNum != null">
+				adv_num = #{advNum},
+			</if>
+			<if test="clickNum != null">
+				click_num = #{clickNum},
+			</if>
+			<if test="defaultContent != null">
+				default_content = #{defaultContent},
+			</if>
+		</set>
+		WHERE
+		ap_id = #{apId}
+	</update>
+
+	<!--根据id查询一条数据 -->
+	<select id="findOne" resultMap="shopAdvPositionMap"
+		parameterType="integer">
+		select
+		<include refid="shopAdvPositionBaseColumn" />
+		from
+		shop_adv_position
+		WHERE
+		ap_id = #{apId}
+	</select>
+
+	<!--查询数据 -->
+	<select id="searchShopAdvPosition" parameterType="map"
+		resultMap="shopAdvPositionMap">
+		SELECT
+		<include refid="shopAdvPositionBaseColumn" />
+		FROM shop_adv_position
+		<where>
+			<if test="apId !=null">
+				AND ap_id = #{apId}
+			</if>
+			<if test="apName !=null">
+				AND ap_name = #{apName}
+			</if>
+			<if test="apIntro !=null">
+				AND ap_intro = #{apIntro}
+			</if>
+			<if test="apClass !=null">
+				AND ap_class = #{apClass}
+			</if>
+			<if test="apDisplay !=null">
+				AND ap_display = #{apDisplay}
+			</if>
+			<if test="isUse !=null">
+				AND is_use = #{isUse}
+			</if>
+			<if test="apWidth !=null">
+				AND ap_width = #{apWidth}
+			</if>
+			<if test="apHeight !=null">
+				AND ap_height = #{apHeight}
+			</if>
+			<if test="apPrice !=null">
+				AND ap_price = #{apPrice}
+			</if>
+			<if test="advNum !=null">
+				AND adv_num = #{advNum}
+			</if>
+			<if test="clickNum !=null">
+				AND click_num = #{clickNum}
+			</if>
+			<if test="defaultContent !=null">
+				AND default_content = #{defaultContent}
+			</if>
+		</where>
+	</select>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopAdvPositionMap"
+		type="com.hzitxx.hitao.entity.ShopAdvPosition">
+		<id column="ap_id" property="apId" />
+		<result column="ap_name" property="apName" />
+		<result column="ap_intro" property="apIntro" />
+		<result column="ap_class" property="apClass" />
+		<result column="ap_display" property="apDisplay" />
+		<result column="is_use" property="isUse" />
+		<result column="ap_width" property="apWidth" />
+		<result column="ap_height" property="apHeight" />
+		<result column="ap_price" property="apPrice" />
+		<result column="adv_num" property="advNum" />
+		<result column="click_num" property="clickNum" />
+		<result column="default_content" property="defaultContent" />
+	</resultMap>
+</mapper>
