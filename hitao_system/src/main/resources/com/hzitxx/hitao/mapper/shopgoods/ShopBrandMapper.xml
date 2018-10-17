@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.shopgoods.ShopBrandMapper">
+	<!--shop_brand表中的列 -->
+	<sql id="shopBrandBaseColumn">
+		brand_id,
+		brand_name,
+		brand_class,
+		class_id,
+		brand_pic,
+		brand_sort,
+		brand_recommend,
+		brand_apply,
+		is_del,
+		created_time,
+		updated_time
+	</sql>
+	<!--添加 -->
+	<insert id="addShopBrand"
+		parameterType="com.hzitxx.hitao.entity.ShopBrand">
+		insert into shop_brand
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="brandId != null">
+				brand_id,
+			</if>
+			<if test="brandName != null">
+				brand_name,
+			</if>
+			<if test="brandClass != null">
+				brand_class,
+			</if>
+			<if test="classId != null">
+				class_id,
+			</if>
+			<if test="brandPic != null">
+				brand_pic,
+			</if>
+			<if test="brandSort != null">
+				brand_sort,
+			</if>
+			<if test="brandRecommend != null">
+				brand_recommend,
+			</if>
+			<if test="brandApply != null">
+				brand_apply,
+			</if>
+			<if test="isDel != null">
+				is_del,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="brandId != null">
+				#{brandId},
+			</if>
+			<if test="brandName != null">
+				#{brandName},
+			</if>
+			<if test="brandClass != null">
+				#{brandClass},
+			</if>
+			<if test="classId != null">
+				#{classId},
+			</if>
+			<if test="brandPic != null">
+				#{brandPic},
+			</if>
+			<if test="brandSort != null">
+				#{brandSort},
+			</if>
+			<if test="brandRecommend != null">
+				#{brandRecommend},
+			</if>
+			<if test="brandApply != null">
+				#{brandApply},
+			</if>
+			<if test="isDel != null">
+				#{isDel},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime},
+			</if>
+		</trim>
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_brand WHERE
+		brand_id = #{brandId}
+	</delete>
+	 <!--根据id批量删除数据-->
+    <delete id="deleteByIds" parameterType="java.lang.String">
+          delete FROM  shop_brand WHERE brand_id in
+          <foreach item="idItem" collection="array" open="(" separator="," close=")">
+            #{idItem}
+          </foreach>
+    </delete>
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopBrand">
+		UPDATE shop_brand
+		<set>
+			<if test="brandId != null">
+				brand_id = #{brandId},
+			</if>
+			<if test="brandName != null">
+				brand_name = #{brandName},
+			</if>
+			<if test="brandClass != null">
+				brand_class = #{brandClass},
+			</if>
+			<if test="classId != null">
+				class_id = #{classId},
+			</if>
+			<if test="brandPic != null">
+				brand_pic = #{brandPic},
+			</if>
+			<if test="brandSort != null">
+				brand_sort = #{brandSort},
+			</if>
+			<if test="brandRecommend != null">
+				brand_recommend = #{brandRecommend},
+			</if>
+			<if test="brandApply != null">
+				brand_apply = #{brandApply},
+			</if>
+			<if test="isDel != null">
+				is_del = #{isDel},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime},
+			</if>
+		</set>
+		WHERE
+		brand_id = #{brandId}
+	</update>
+	<!--查询数据 -->
+	<select id="selectShopBrand" parameterType="map"
+		resultMap="shopBrandMap">
+		SELECT
+		<include refid="shopBrandBaseColumn" />
+		FROM shop_brand
+		<include refid="shopBrandBaseWhereSql" />
+	</select>
+	<!--基础查询条件 -->
+	<sql id="shopBrandBaseWhereSql">
+			<where>
+				<if test="brandId !=null">
+					AND brand_id = #{brandId}
+				</if>
+				<if test="brandName !=null">
+					AND brand_name = #{brandName}
+				</if>
+				<if test="brandClass !=null">
+					AND brand_class = #{brandClass}
+				</if>
+				<if test="classId !=null">
+					AND class_id = #{classId}
+				</if>
+				<if test="brandPic !=null">
+					AND brand_pic = #{brandPic}
+				</if>
+				<if test="brandSort !=null">
+					AND brand_sort = #{brandSort}
+				</if>
+				<if test="brandRecommend !=null">
+					AND brand_recommend = #{brandRecommend}
+				</if>
+				<if test="brandApply !=null">
+					AND brand_apply = #{brandApply}
+				</if>
+				<if test="isDel !=null">
+					AND is_del = #{isDel}
+				</if>
+				<if test="createdTime !=null">
+					AND created_time = #{createdTime}
+				</if>
+				<if test="updatedTime !=null">
+					AND updated_time = #{updatedTime}
+				</if>
+			</where>
+	</sql>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopBrandMap"
+		type="com.hzitxx.hitao.entity.ShopBrand">
+		<id column="brand_id" property="brandId" />
+		<result column="brand_name" property="brandName" />
+		<result column="brand_class" property="brandClass" />
+		<result column="class_id" property="classId" />
+		<result column="brand_pic" property="brandPic" />
+		<result column="brand_sort" property="brandSort" />
+		<result column="brand_recommend" property="brandRecommend" />
+		<result column="brand_apply" property="brandApply" />
+		<result column="is_del" property="isDel" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+</mapper>
