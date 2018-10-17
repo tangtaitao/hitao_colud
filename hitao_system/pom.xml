@@ -15,18 +15,11 @@
 			<artifactId>hitao_commons</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-<<<<<<< HEAD
 		<!-- springboot与pagehelper集成包 -->
         <dependency>
 		    <groupId>com.github.pagehelper</groupId>
 		    <artifactId>pagehelper-spring-boot-starter</artifactId>
 		    <version>1.2.5</version>
-=======
-		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot-starter</artifactId>
-			<version>1.2.5</version>
->>>>>>> f6d1d331515af2cabc53785e18c63a9d6e913f61
 		</dependency>
 	</dependencies>
 </project>
