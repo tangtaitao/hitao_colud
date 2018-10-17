@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.shopgoods.ShopGoodsCategoryMapper">
+	<!--shop_goods_category表中的列 -->
+	<sql id="shopGoodsCategoryBaseColumn">
+		cat_id,
+		cat_name,
+		parent_id,
+		sort,
+		icon_image,
+		level,
+		keywords,
+		description,
+		is_del,
+		created_time,
+		updated_time
+	</sql>
+	<!--添加 -->
+	<insert id="addShopGoodsCategory"
+		parameterType="com.hzitxx.hitao.entity.ShopGoodsCategory">
+		insert into shop_goods_category
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="catId != null">
+				cat_id,
+			</if>
+			<if test="catName != null">
+				cat_name,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="sort != null">
+				sort,
+			</if>
+			<if test="iconImage != null">
+				icon_image,
+			</if>
+			<if test="level != null">
+				level,
+			</if>
+			<if test="keywords != null">
+				keywords,
+			</if>
+			<if test="description != null">
+				description,
+			</if>
+			<if test="isDel != null">
+				is_del,
+			</if>
+			<if test="createdTime != null">
+				created_time,
+			</if>
+			<if test="updatedTime != null">
+				updated_time,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="catId != null">
+				#{catId},
+			</if>
+			<if test="catName != null">
+				#{catName},
+			</if>
+			<if test="parentId != null">
+				#{parentId},
+			</if>
+			<if test="sort != null">
+				#{sort},
+			</if>
+			<if test="iconImage != null">
+				#{iconImage},
+			</if>
+			<if test="level != null">
+				#{level},
+			</if>
+			<if test="keywords != null">
+				#{keywords},
+			</if>
+			<if test="description != null">
+				#{description},
+			</if>
+			<if test="isDel != null">
+				#{isDel},
+			</if>
+			<if test="createdTime != null">
+				#{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				#{updatedTime},
+			</if>
+		</trim>
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_goods_category WHERE
+		cat_id = #{catId}
+	</delete>
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopGoodsCategory">
+		UPDATE shop_goods_category
+		<set>
+			<if test="catId != null">
+				cat_id = #{catId},
+			</if>
+			<if test="catName != null">
+				cat_name = #{catName},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId},
+			</if>
+			<if test="sort != null">
+				sort = #{sort},
+			</if>
+			<if test="iconImage != null">
+				icon_image = #{iconImage},
+			</if>
+			<if test="level != null">
+				level = #{level},
+			</if>
+			<if test="keywords != null">
+				keywords = #{keywords},
+			</if>
+			<if test="description != null">
+				description = #{description},
+			</if>
+			<if test="isDel != null">
+				is_del = #{isDel},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime},
+			</if>
+		</set>
+		WHERE
+		cat_id = #{catId}
+	</update>
+	<!--查询数据 -->
+	<select id="selectShopGoodsCategory" parameterType="map"
+		resultMap="shopGoodsCategoryMap">
+		SELECT
+		<include refid="shopGoodsCategoryBaseColumn" />
+		FROM shop_goods_category
+		<include refid="shopGoodsCategoryBaseWhereSql" />
+	</select>
+	<!--基础查询条件 -->
+	<sql id="shopGoodsCategoryBaseWhereSql">
+			<where>
+				<if test="catId !=null">
+					AND cat_id = #{catId}
+				</if>
+				<if test="catName !=null">
+					AND cat_name = #{catName}
+				</if>
+				<if test="parentId !=null">
+					AND parent_id = #{parentId}
+				</if>
+				<if test="sort !=null">
+					AND sort = #{sort}
+				</if>
+				<if test="iconImage !=null">
+					AND icon_image = #{iconImage}
+				</if>
+				<if test="level !=null">
+					AND level = #{level}
+				</if>
+				<if test="keywords !=null">
+					AND keywords = #{keywords}
+				</if>
+				<if test="description !=null">
+					AND description = #{description}
+				</if>
+				<if test="isDel !=null">
+					AND is_del = #{isDel}
+				</if>
+				<if test="createdTime !=null">
+					AND created_time = #{createdTime}
+				</if>
+				<if test="updatedTime !=null">
+					AND updated_time = #{updatedTime}
+				</if>
+			</where>
+	</sql>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopGoodsCategoryMap"
+		type="com.hzitxx.hitao.entity.ShopGoodsCategory">
+		<id column="cat_id" property="catId" />
+		<result column="cat_name" property="catName" />
+		<result column="parent_id" property="parentId" />
+		<result column="sort" property="sort" />
+		<result column="icon_image" property="iconImage" />
+		<result column="level" property="level" />
+		<result column="keywords" property="keywords" />
+		<result column="description" property="description" />
+		<result column="is_del" property="isDel" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+</mapper>

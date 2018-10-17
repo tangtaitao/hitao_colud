@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.others.ShopSalenumMapper">
+	<!--shop_salenum表中的列 -->
+	<sql id="shopSalenumBaseColumn">
+		id,
+		date,
+		salenum,
+		goods_id
+	</sql>
+	<!--添加 -->
+	<insert id="addShopSalenum"
+		parameterType="com.hzitxx.hitao.entity.ShopSalenum">
+		insert into shop_salenum
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="date != null">
+				date,
+			</if>
+			<if test="salenum != null">
+				salenum,
+			</if>
+			<if test="goodsId != null">
+				goods_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="date != null">
+				#{date},
+			</if>
+			<if test="salenum != null">
+				#{salenum},
+			</if>
+			<if test="goodsId != null">
+				#{goodsId},
+			</if>
+		</trim>
+	</insert>
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_salenum WHERE
+		id = #{id}
+	</delete>
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopSalenum">
+		UPDATE shop_salenum
+		<set>
+			<if test="id != null">
+				id = #{id},
+			</if>
+			<if test="date != null">
+				date = #{date},
+			</if>
+			<if test="salenum != null">
+				salenum = #{salenum},
+			</if>
+			<if test="goodsId != null">
+				goods_id = #{goodsId},
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+	<!--查询数据 -->
+	<select id="selectShopSalenum" parameterType="map"
+		resultMap="shopSalenumMap">
+		SELECT
+		<include refid="shopSalenumBaseColumn" />
+		FROM shop_salenum
+		<include refid="shopSalenumBaseWhereSql" />
+	</select>
+	<!--基础查询条件 -->
+	<sql id="shopSalenumBaseWhereSql">
+			<where>
+				<if test="id !=null">
+					AND id = #{id}
+				</if>
+				<if test="date !=null">
+					AND date = #{date}
+				</if>
+				<if test="salenum !=null">
+					AND salenum = #{salenum}
+				</if>
+				<if test="goodsId !=null">
+					AND goods_id = #{goodsId}
+				</if>
+			</where>
+	</sql>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopSalenumMap"
+		type="com.hzitxx.hitao.entity.ShopSalenum">
+		<id column="id" property="id" />
+		<result column="date" property="date" />
+		<result column="salenum" property="salenum" />
+		<result column="goods_id" property="goodsId" />
+	</resultMap>
+</mapper>
