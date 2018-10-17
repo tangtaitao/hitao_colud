@@ -24,6 +24,8 @@ public class ShopRole implements Serializable {
      * 角色描述
      */
     private String roleDescription;
+    
+    
     private Date createdTime;
     /**
      * 创建人

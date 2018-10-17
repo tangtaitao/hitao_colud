@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: hitao_member
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Administrator
+Built-By: ￩ﾾﾙ￤ﾺﾌ
 Implementation-Vendor-Id: com.hzit.hitao_cloud
-Build-Jdk: 1.8.0_121
+Build-Jdk: 1.8.0_181
 Implementation-URL: http://projects.spring.io/spring-boot/hitao_cloud/
  hitao_member/
 Created-By: Maven Integration for Eclipse
