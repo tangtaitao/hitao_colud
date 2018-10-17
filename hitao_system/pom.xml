@@ -15,11 +15,11 @@
 			<artifactId>hitao_commons</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- springboot与pagehelper集成包 -->
-        <dependency>
-		    <groupId>com.github.pagehelper</groupId>
-		    <artifactId>pagehelper-spring-boot-starter</artifactId>
-		    <version>1.2.5</version>
+		<!-- 分页查询jar包 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.5</version>
 		</dependency>
 	</dependencies>
 </project>
