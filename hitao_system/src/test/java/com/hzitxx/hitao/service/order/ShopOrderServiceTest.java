@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.hzitxx.hitao.entity.ShopOrder;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
-import com.netflix.discovery.converters.Auto;
 
 /**
  * 测试ShopOrderService

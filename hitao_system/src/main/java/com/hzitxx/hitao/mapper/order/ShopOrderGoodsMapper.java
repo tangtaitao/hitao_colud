@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import com.hzitxx.hitao.entity.ShopOrderGoods;
-import com.hzitxx.hitao.entity.ShopOrderLog;
 
 /**
  * 操作shop_order_goods表

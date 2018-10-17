@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.privilege.ShopRoleMenuMapper">
+	<!-- 查询所有用户信息 -->
+	<select id="findAll" resultMap="shopRoleMap">
+		select role_id,role_name,role_description,created_time,created_by,
+		updated_time,updated_by,is_del from shop_role
+	</select>
+	<select id="findOne" resultMap="shopRoleMap" parameterType="map">
+		select role_id,role_name,role_description,created_time,created_by,
+		updated_time,updated_by,is_del from shop_role where role_id=#{roleId}
+	</select>
+	<!-- 增加用户信息 -->
+	<insert id="addRole" parameterType="com.hzitxx.hitao.entity.ShopRole">
+		insert into shop_role
+		(role_id,role_name,role_description,created_time,created_by,
+		updated_time,updated_by,is_del)
+		values(#{roleId},#{roleName},#{roleDescription},#{createdTime},#{createdBy},#{updatedTime},
+		#{updatedBy},#{isDel})
+	</insert>
+	<!-- 修改用户信息 -->
+	<update id="updateRole" parameterType="com.hzitxx.hitao.entity.ShopRole">
+		update shop_role set 
+		role_id=#{roleId},role_name=#{roleName},role_description=#{roleDescription},created_time=#{createdTime},created_by=#{createdBy},
+		updated_time=#{updatedTime},updated_by=#{updatedBy},is_del=#{isDel}
+		 where role_id=#{roleId};
+	</update>
+	<!-- 删除用户信息 -->
+	<delete id="deleteRole" parameterType="com.hzitxx.hitao.entity.ShopRole">
+		delete from shop_role where role_id=#{roleId};
+	</delete>
+	<resultMap type="com.hzitxx.hitao.entity.ShopRole" id="shopRoleMap">
+		<id column="role_id" property="roleId"/>
+		<result column="role_name" property="roleName"/>
+		<result column="role_description" property="roleDescription"/>
+		<result column="created_time" property="createdTime"/>
+		<result column="created_by" property="createdBy"/>
+		<result column="updated_time" property="updatedTime"/>
+		<result column="updated_by" property="updatedBy"/>
+		<result column="is_del" property="isDel"/>
+	</resultMap>
+</mapper>

@@ -8,12 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.hzitxx.hitao.entity.ShopAdv;
 import com.hzitxx.hitao.entity.ShopAdvClick;
 import com.hzitxx.hitao.mapper.marketing.ShopAdvClickMapper;
-import com.hzitxx.hitao.mapper.marketing.ShopAdvMapper;
 import com.hzitxx.hitao.service.marketing.ShopAdvClickService;
-import com.hzitxx.hitao.service.marketing.ShopAdvService;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
 

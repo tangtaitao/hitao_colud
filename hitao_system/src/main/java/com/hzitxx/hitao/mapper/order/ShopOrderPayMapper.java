@@ -3,7 +3,6 @@ package com.hzitxx.hitao.mapper.order;
 import java.util.List;
 import java.util.Map;
 
-import com.hzitxx.hitao.entity.ShopOrderLog;
 import com.hzitxx.hitao.entity.ShopOrderPay;
 
 /**

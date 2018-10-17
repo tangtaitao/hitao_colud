@@ -1,6 +1,5 @@
 package com.hzitxx.hitao.mapper.order;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,10 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.hzitxx.hitao.entity.ShopOrderLog;
 import com.hzitxx.hitao.entity.ShopOrderPay;
 import com.hzitxx.hitao.mapper.order.ShopOrderPayMapper;
-import com.netflix.discovery.converters.Auto;
 
 /**
  * 测试ShopOrderPayMapper

@@ -2,7 +2,6 @@ package com.hzitxx.hitao.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 /**
  * <p>
  * 会员相关数据统计
