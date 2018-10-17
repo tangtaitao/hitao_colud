@@ -47,7 +47,6 @@ public class ShopGoodsController {
 			@RequestParam(value = "limit", defaultValue = "10") int limit,ShopGoods shopGoods) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("goodsId", shopGoods.getGoodsId());
-		System.out.println(shopGoods.getGoodsId()+"=="+map.get("goodsId"));
 		return service.selectShopGoods(page, limit, map);
 	}
 	
