@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.marketing.ShopArticleMapper">
+	<!--shop_article表中的列 -->
+	<sql id="shopArticleBaseColumn">
+		article_id,
+		article_title,
+		article_class_id,
+		article_origin,
+		article_origin_address,
+		article_author,
+		article_abstract,
+		article_content,
+		article_image,
+		article_keyword,
+		article_link,
+		article_goods,
+		article_start_time,
+		article_end_time,
+		article_publish_time,
+		article_click,
+		article_sort,
+		article_commend_flag,
+		article_comment_flag,
+		article_verify_admin,
+		article_verify_time,
+		article_state,
+		article_publisher_name,
+		article_publisher_id,
+		article_attachment_path,
+		article_image_all,
+		article_modify_time,
+		article_tag,
+		article_comment_count,
+		article_commend_image_flag,
+		article_share_count,
+		article_verify_reason
+	</sql>
+
+	<!-- 添加一条数据 -->
+	<insert id="addShopArticle"
+		parameterType="com.hzitxx.hitao.entity.ShopArticle">
+		INSERT INTO shop_article(
+		<include refid="shopArticleBaseColumn" />
+		) VALUES(
+		null,
+		#{articleTitle},
+		#{articleClassId},
+		#{articleOrigin},
+		#{articleOriginAddress},
+		#{articleAuthor},
+		#{articleAbstract},
+		#{articleContent},
+		#{articleImage},
+		#{articleKeyword},
+		#{articleLink},
+		#{articleGoods},
+		#{articleStartTime},
+		#{articleEndTime},
+		#{articlePublishTime},
+		#{articleClick},
+		#{articleSort},
+		#{articleCommendFlag},
+		#{articleCommentFlag},
+		#{articleVerifyAdmin},
+		#{articleVerifyTime},
+		#{articleState},
+		#{articlePublisherName},
+		#{articlePublisherId},
+		#{articleAttachmentPath},
+		#{articleImageAll},
+		#{articleModifyTime},
+		#{articleTag},
+		#{articleCommentCount},
+		#{articleCommendImageFlag},
+		#{articleShareCount},
+		#{articleVerifyReason}
+		)
+	</insert>
+
+	<!-- 根据id删除数据 -->
+	<delete id="deleteById" parameterType="Integer">
+		DELETE FROM shop_article
+		WHERE
+		article_id = #{articleId}
+	</delete>
+
+	<!-- 根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopArticle">
+		UPDATE shop_article
+		<set>
+			<if test="articleTitle != null">
+				article_title = #{articleTitle},
+			</if>
+			<if test="articleClassId != null">
+				article_class_id = #{articleClassId},
+			</if>
+			<if test="articleOrigin != null">
+				article_origin = #{articleOrigin},
+			</if>
+			<if test="articleOriginAddress != null">
+				article_origin_address = #{articleOriginAddress},
+			</if>
+			<if test="articleAuthor != null">
+				article_author = #{articleAuthor},
+			</if>
+			<if test="articleAbstract != null">
+				article_abstract = #{articleAbstract},
+			</if>
+			<if test="articleContent != null">
+				article_content = #{articleContent},
+			</if>
+			<if test="articleImage != null">
+				article_image = #{articleImage},
+			</if>
+			<if test="articleKeyword != null">
+				article_keyword = #{articleKeyword},
+			</if>
+			<if test="articleLink != null">
+				article_link = #{articleLink},
+			</if>
+			<if test="articleGoods != null">
+				article_goods = #{articleGoods},
+			</if>
+			<if test="articleStartTime != null">
+				article_start_time = #{articleStartTime},
+			</if>
+			<if test="articleEndTime != null">
+				article_end_time = #{articleEndTime},
+			</if>
+			<if test="articlePublishTime != null">
+				article_publish_time = #{articlePublishTime},
+			</if>
+			<if test="articleClick != null">
+				article_click = #{articleClick},
+			</if>
+			<if test="articleSort != null">
+				article_sort = #{articleSort},
+			</if>
+			<if test="articleCommendFlag != null">
+				article_commend_flag = #{articleCommendFlag},
+			</if>
+			<if test="articleCommentFlag != null">
+				article_comment_flag = #{articleCommentFlag},
+			</if>
+			<if test="articleVerifyAdmin != null">
+				article_verify_admin = #{articleVerifyAdmin},
+			</if>
+			<if test="articleVerifyTime != null">
+				article_verify_time = #{articleVerifyTime},
+			</if>
+			<if test="articleState != null">
+				article_state = #{articleState},
+			</if>
+			<if test="articlePublisherName != null">
+				article_publisher_name = #{articlePublisherName},
+			</if>
+			<if test="articlePublisherId != null">
+				article_publisher_id = #{articlePublisherId},
+			</if>
+			<if test="articleAttachmentPath != null">
+				article_attachment_path = #{articleAttachmentPath},
+			</if>
+			<if test="articleImageAll != null">
+				article_image_all = #{articleImageAll},
+			</if>
+			<if test="articleModifyTime != null">
+				article_modify_time = #{articleModifyTime},
+			</if>
+			<if test="articleTag != null">
+				article_tag = #{articleTag},
+			</if>
+			<if test="articleCommentCount != null">
+				article_comment_count = #{articleCommentCount},
+			</if>
+			<if test="articleCommendImageFlag != null">
+				article_commend_image_flag = #{articleCommendImageFlag},
+			</if>
+			<if test="articleShareCount != null">
+				article_share_count = #{articleShareCount},
+			</if>
+			<if test="articleVerifyReason != null">
+				article_verify_reason = #{articleVerifyReason},
+			</if>
+		</set>
+		WHERE article_id = #{articleId}
+	</update>
+
+	<!-- 查询一条数据 -->
+	<select id="findOne" resultMap="shopArticleMap"
+		parameterType="Integer">
+		select
+		<include refid="shopArticleBaseColumn" />
+		from
+		shop_article
+		WHERE
+		article_id = #{articleId}
+	</select>
+
+	<!--查询数据 -->
+	<select id="searchShopArticle" parameterType="map"
+		resultMap="shopArticleMap">
+		SELECT
+		<include refid="shopArticleBaseColumn" />
+		FROM shop_article
+		<where>
+			<if test="articleId !=null">
+				AND article_id = #{articleId}
+			</if>
+			<if test="articleTitle !=null">
+				AND article_title = #{articleTitle}
+			</if>
+			<if test="articleClassId !=null">
+				AND article_class_id = #{articleClassId}
+			</if>
+			<if test="articleOrigin !=null">
+				AND article_origin = #{articleOrigin}
+			</if>
+			<if test="articleOriginAddress !=null">
+				AND article_origin_address = #{articleOriginAddress}
+			</if>
+			<if test="articleAuthor !=null">
+				AND article_author = #{articleAuthor}
+			</if>
+			<if test="articleAbstract !=null">
+				AND article_abstract = #{articleAbstract}
+			</if>
+			<if test="articleContent !=null">
+				AND article_content = #{articleContent}
+			</if>
+			<if test="articleImage !=null">
+				AND article_image = #{articleImage}
+			</if>
+			<if test="articleKeyword !=null">
+				AND article_keyword = #{articleKeyword}
+			</if>
+			<if test="articleLink !=null">
+				AND article_link = #{articleLink}
+			</if>
+			<if test="articleGoods !=null">
+				AND article_goods = #{articleGoods}
+			</if>
+			<if test="articleStartTime !=null">
+				AND article_start_time = #{articleStartTime}
+			</if>
+			<if test="articleEndTime !=null">
+				AND article_end_time = #{articleEndTime}
+			</if>
+			<if test="articlePublishTime !=null">
+				AND article_publish_time = #{articlePublishTime}
+			</if>
+			<if test="articleClick !=null">
+				AND article_click = #{articleClick}
+			</if>
+			<if test="articleSort !=null">
+				AND article_sort = #{articleSort}
+			</if>
+			<if test="articleCommendFlag !=null">
+				AND article_commend_flag = #{articleCommendFlag}
+			</if>
+			<if test="articleCommentFlag !=null">
+				AND article_comment_flag = #{articleCommentFlag}
+			</if>
+			<if test="articleVerifyAdmin !=null">
+				AND article_verify_admin = #{articleVerifyAdmin}
+			</if>
+			<if test="articleVerifyTime !=null">
+				AND article_verify_time = #{articleVerifyTime}
+			</if>
+			<if test="articleState !=null">
+				AND article_state = #{articleState}
+			</if>
+			<if test="articlePublisherName !=null">
+				AND article_publisher_name = #{articlePublisherName}
+			</if>
+			<if test="articlePublisherId !=null">
+				AND article_publisher_id = #{articlePublisherId}
+			</if>
+			<if test="articleAttachmentPath !=null">
+				AND article_attachment_path = #{articleAttachmentPath}
+			</if>
+			<if test="articleImageAll !=null">
+				AND article_image_all = #{articleImageAll}
+			</if>
+			<if test="articleModifyTime !=null">
+				AND article_modify_time = #{articleModifyTime}
+			</if>
+			<if test="articleTag !=null">
+				AND article_tag = #{articleTag}
+			</if>
+			<if test="articleCommentCount !=null">
+				AND article_comment_count = #{articleCommentCount}
+			</if>
+			<if test="articleCommendImageFlag !=null">
+				AND article_commend_image_flag = #{articleCommendImageFlag}
+			</if>
+			<if test="articleShareCount !=null">
+				AND article_share_count = #{articleShareCount}
+			</if>
+			<if test="articleVerifyReason !=null">
+				AND article_verify_reason = #{articleVerifyReason}
+			</if>
+		</where>
+	</select>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopArticleMap"
+		type="com.hzitxx.hitao.entity.ShopArticle">
+		<id column="article_id" property="articleId" />
+		<result column="article_title" property="articleTitle" />
+		<result column="article_class_id" property="articleClassId" />
+		<result column="article_origin" property="articleOrigin" />
+		<result column="article_origin_address"
+			property="articleOriginAddress" />
+		<result column="article_author" property="articleAuthor" />
+		<result column="article_abstract" property="articleAbstract" />
+		<result column="article_content" property="articleContent" />
+		<result column="article_image" property="articleImage" />
+		<result column="article_keyword" property="articleKeyword" />
+		<result column="article_link" property="articleLink" />
+		<result column="article_goods" property="articleGoods" />
+		<result column="article_start_time" property="articleStartTime" />
+		<result column="article_end_time" property="articleEndTime" />
+		<result column="article_publish_time"
+			property="articlePublishTime" />
+		<result column="article_click" property="articleClick" />
+		<result column="article_sort" property="articleSort" />
+		<result column="article_commend_flag"
+			property="articleCommendFlag" />
+		<result column="article_comment_flag"
+			property="articleCommentFlag" />
+		<result column="article_verify_admin"
+			property="articleVerifyAdmin" />
+		<result column="article_verify_time"
+			property="articleVerifyTime" />
+		<result column="article_state" property="articleState" />
+		<result column="article_publisher_name"
+			property="articlePublisherName" />
+		<result column="article_publisher_id"
+			property="articlePublisherId" />
+		<result column="article_attachment_path"
+			property="articleAttachmentPath" />
+		<result column="article_image_all" property="articleImageAll" />
+		<result column="article_modify_time"
+			property="articleModifyTime" />
+		<result column="article_tag" property="articleTag" />
+		<result column="article_comment_count"
+			property="articleCommentCount" />
+		<result column="article_commend_image_flag"
+			property="articleCommendImageFlag" />
+		<result column="article_share_count"
+			property="articleShareCount" />
+		<result column="article_verify_reason"
+			property="articleVerifyReason" />
+	</resultMap>
+</mapper>

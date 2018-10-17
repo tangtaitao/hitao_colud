@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.marketing.ShopAdvClickMapper">
+	<!--shop_adv_click表中的列 -->
+	<sql id="shopAdvClickBaseColumn">
+		adv_id,
+		ap_id,
+		click_year,
+		click_month,
+		click_num,
+		adv_name,
+		ap_name
+	</sql>
+
+
+	<!--添加 -->
+	<insert id="addShopAdvClick"
+		parameterType="com.hzitxx.hitao.entity.ShopAdvClick">
+		INSERT INTO shop_adv_click(
+		<include refid="shopAdvClickBaseColumn" />
+		) VALUES(
+		null,
+		#{apId},
+		#{clickYear},
+		#{clickMonth},
+		#{clickNum},
+		#{advName},
+		#{apName}
+		)
+	</insert>
+
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_adv_click
+		WHERE adv_id = #{advId}
+	</delete>
+
+	<!-- 根据id更新数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopAdvClick">
+		UPDATE shop_adv_click
+		<set>
+			<if test="apId != null">
+				ap_id = #{apId},
+			</if>
+			<if test="clickYear != null">
+				click_year = #{clickYear},
+			</if>
+			<if test="clickMonth != null">
+				click_month = #{clickMonth},
+			</if>
+			<if test="clickNum != null">
+				click_num = #{clickNum},
+			</if>
+			<if test="advName != null">
+				adv_name = #{advName},
+			</if>
+			<if test="apName != null">
+				ap_name = #{apName},
+			</if>
+		</set>
+		WHERE adv_id = #{advId}
+	</update>
+
+	<!--根据id查询一条数据 -->
+	<select id="findOne" resultMap="shopAdvClickMap"
+		parameterType="integer">
+		select
+		<include refid="shopAdvClickBaseColumn" />
+		from
+		shop_adv_click
+		WHERE adv_id = #{advId}
+	</select>
+
+	<!--查询数据 -->
+	<select id="searchShopAdvClick" parameterType="map"
+		resultMap="shopAdvClickMap">
+		SELECT
+		<include refid="shopAdvClickBaseColumn" />
+		FROM shop_adv_click
+		<where>
+			<if test="advId !=null">
+				AND adv_id = #{advId}
+			</if>
+			<if test="apId !=null">
+				AND ap_id = #{apId}
+			</if>
+			<if test="clickYear !=null">
+				AND click_year = #{clickYear}
+			</if>
+			<if test="clickMonth !=null">
+				AND click_month = #{clickMonth}
+			</if>
+			<if test="clickNum !=null">
+				AND click_num = #{clickNum}
+			</if>
+			<if test="advName !=null">
+				AND adv_name = #{advName}
+			</if>
+			<if test="apName !=null">
+				AND ap_name = #{apName}
+			</if>
+		</where>
+	</select>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopAdvClickMap"
+		type="com.hzitxx.hitao.entity.ShopAdvClick">
+		<result column="adv_id" property="advId" />
+		<result column="ap_id" property="apId" />
+		<result column="click_year" property="clickYear" />
+		<result column="click_month" property="clickMonth" />
+		<result column="click_num" property="clickNum" />
+		<result column="adv_name" property="advName" />
+		<result column="ap_name" property="apName" />
+	</resultMap>
+</mapper>

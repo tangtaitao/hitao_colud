@@ -1,23 +1,32 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.hzit.hitao_cloud</groupId>
-    <artifactId>hitao_cloud</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>hitao_system</artifactId>
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hzit.hitao_cloud</groupId>
+		<artifactId>hitao_cloud</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>hitao_system</artifactId>
+	<dependencies>
 		<!-- 引用Commons项目中的类 -->
 		<dependency>
 			<groupId>com.hzit.hitao_cloud</groupId>
 			<artifactId>hitao_commons</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+<<<<<<< HEAD
 		<!-- springboot与pagehelper集成包 -->
         <dependency>
 		    <groupId>com.github.pagehelper</groupId>
 		    <artifactId>pagehelper-spring-boot-starter</artifactId>
 		    <version>1.2.5</version>
+=======
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.5</version>
+>>>>>>> f6d1d331515af2cabc53785e18c63a9d6e913f61
 		</dependency>
 	</dependencies>
 </project>

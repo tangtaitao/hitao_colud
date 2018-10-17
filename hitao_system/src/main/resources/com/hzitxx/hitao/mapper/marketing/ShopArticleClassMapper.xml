@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.marketing.ShopArticleClassMapper">
+	<!--shop_article_class表中的列 -->
+	<sql id="shopArticleClassBaseColumn">
+		ac_id,
+		ac_code,
+		ac_name,
+		ac_parent_id,
+		ac_sort,
+		is_del,
+		ac_status,
+		created_time,
+		updated_time
+	</sql>
+
+	<!-- 增加一条数据 -->
+	<insert id="addShopArticleClass"
+		parameterType="com.hzitxx.hitao.entity.ShopArticleClass">
+		INSERT INTO shop_article_class(
+		<include refid="shopArticleClassBaseColumn" />
+		) VALUES(
+		null,
+		#{acCode},
+		#{acName},
+		#{acParentId},
+		#{acSort},
+		0,
+		#{acStatus},
+		#{createdTime},
+		null
+		)
+	</insert>
+
+	<!-- 删除一条数据 -->
+	<delete id="deleteById" parameterType="Integer">
+		DELETE FROM
+		shop_article_class WHERE
+		ac_id = #{acId}
+	</delete>
+
+	<!-- 更新一条数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopArticleClass">
+		UPDATE shop_article_class
+		<set>
+			<if test="acCode != null">
+				ac_code = #{acCode},
+			</if>
+			<if test="acName != null">
+				ac_name = #{acName},
+			</if>
+			<if test="acParentId != null">
+				ac_parent_id = #{acParentId},
+			</if>
+			<if test="acSort != null">
+				ac_sort = #{acSort},
+			</if>
+			<if test="isDel != null">
+				is_del = #{isDel},
+			</if>
+			<if test="acStatus != null">
+				ac_status = #{acStatus},
+			</if>
+			<if test="createdTime != null">
+				created_time = #{createdTime},
+			</if>
+			<if test="updatedTime != null">
+				updated_time = #{updatedTime},
+			</if>
+		</set>
+		WHERE
+		ac_id = #{acId}
+	</update>
+
+	<!-- 查询一条数据 -->
+	<select id="findOne" resultMap="shopArticleClassMap"
+		parameterType="Integer">
+		select
+		<include refid="shopArticleClassBaseColumn" />
+		from
+		shop_article_class
+		WHERE
+		ac_id = #{acId}
+	</select>
+
+	<!-- 搜索数据（包括查询所有数据） -->
+	<select id="searchShopArticleClass"
+		resultMap="shopArticleClassMap" parameterType="map">
+		SELECT
+		<include refid="shopArticleClassBaseColumn" />
+		FROM shop_article_class
+		<where>
+			<if test="acId !=null">
+				AND ac_id = #{acId}
+			</if>
+			<if test="acCode !=null">
+				AND ac_code = #{acCode}
+			</if>
+			<if test="acName !=null">
+				AND ac_name = #{acName}
+			</if>
+			<if test="acParentId !=null">
+				AND ac_parent_id = #{acParentId}
+			</if>
+			<if test="acSort !=null">
+				AND ac_sort = #{acSort}
+			</if>
+			<if test="isDel !=null">
+				AND is_del = #{isDel}
+			</if>
+			<if test="acStatus !=null">
+				AND ac_status = #{acStatus}
+			</if>
+			<if test="createdTime !=null">
+				AND created_time = #{createdTime}
+			</if>
+			<if test="updatedTime !=null">
+				AND updated_time = #{updatedTime}
+			</if>
+		</where>
+	</select>
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopArticleClassMap"
+		type="com.hzitxx.hitao.entity.ShopArticleClass">
+		<id column="ac_id" property="acId" />
+		<result column="ac_code" property="acCode" />
+		<result column="ac_name" property="acName" />
+		<result column="ac_parent_id" property="acParentId" />
+		<result column="ac_sort" property="acSort" />
+		<result column="is_del" property="isDel" />
+		<result column="ac_status" property="acStatus" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+</mapper>

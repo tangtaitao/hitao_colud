@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.marketing.ShopAdvMapper">
+	<!--shop_adv表中的列 -->
+	<sql id="shopAdvBaseColumn">
+		adv_id,
+		ap_id,
+		adv_title,
+		adv_content,
+		adv_start_date,
+		adv_end_date,
+		slide_sort,
+		member_id,
+		member_name,
+		click_num,
+		is_allow,
+		buy_style,
+		goldpay
+	</sql>
+
+	<!--添加 -->
+	<insert id="addShopAdv"
+		parameterType="com.hzitxx.hitao.entity.ShopAdv">
+		INSERT INTO shop_adv(
+		<include refid="shopAdvBaseColumn" />
+		) VALUES(
+		null,
+		#{apId},
+		#{advTitle},
+		#{advContent},
+		#{advStartDate},
+		#{advEndDate},
+		#{slideSort},
+		#{memberId},
+		#{memberName},
+		#{clickNum},
+		#{isAllow},
+		#{buyStyle},
+		#{goldpay}
+		)
+	</insert>
+
+	<!--根据id删除数据 -->
+	<delete id="deleteById" parameterType="integer">
+		DELETE FROM shop_adv WHERE
+		adv_id = #{advId}
+	</delete>
+
+	<!--根据id修改数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopAdv">
+		UPDATE shop_adv
+		<set>
+			<if test="apId != null">
+				ap_id = #{apId},
+			</if>
+			<if test="advTitle != null">
+				adv_title = #{advTitle},
+			</if>
+			<if test="advContent != null">
+				adv_content = #{advContent},
+			</if>
+			<if test="advStartDate != null">
+				adv_start_date = #{advStartDate},
+			</if>
+			<if test="advEndDate != null">
+				adv_end_date = #{advEndDate},
+			</if>
+			<if test="slideSort != null">
+				slide_sort = #{slideSort},
+			</if>
+			<if test="memberId != null">
+				member_id = #{memberId},
+			</if>
+			<if test="memberName != null">
+				member_name = #{memberName},
+			</if>
+			<if test="clickNum != null">
+				click_num = #{clickNum},
+			</if>
+			<if test="isAllow != null">
+				is_allow = #{isAllow},
+			</if>
+			<if test="buyStyle != null">
+				buy_style = #{buyStyle},
+			</if>
+			<if test="goldpay != null">
+				goldpay = #{goldpay},
+			</if>
+		</set>
+		WHERE
+		adv_id = #{advId}
+	</update>
+
+	<!--根据id查询一条数据 -->
+	<select id="findOne" resultMap="shopAdvMap"
+		parameterType="integer">
+		select
+		<include refid="shopAdvBaseColumn" />
+		from
+		shop_adv
+		WHERE
+		adv_id = #{advId}
+	</select>
+
+	<!--查询数据 -->
+	<select id="searchShopAdv" parameterType="map"
+		resultMap="shopAdvMap">
+		SELECT
+		<include refid="shopAdvBaseColumn" />
+		FROM shop_adv
+		<where>
+			<if test="advId !=null">
+				AND adv_id = #{advId}
+			</if>
+			<if test="apId !=null">
+				AND ap_id = #{apId}
+			</if>
+			<if test="advTitle !=null">
+				AND adv_title = #{advTitle}
+			</if>
+			<if test="advContent !=null">
+				AND adv_content = #{advContent}
+			</if>
+			<if test="advStartDate !=null">
+				AND adv_start_date = #{advStartDate}
+			</if>
+			<if test="advEndDate !=null">
+				AND adv_end_date = #{advEndDate}
+			</if>
+			<if test="slideSort !=null">
+				AND slide_sort = #{slideSort}
+			</if>
+			<if test="memberId !=null">
+				AND member_id = #{memberId}
+			</if>
+			<if test="memberName !=null">
+				AND member_name = #{memberName}
+			</if>
+			<if test="clickNum !=null">
+				AND click_num = #{clickNum}
+			</if>
+			<if test="isAllow !=null">
+				AND is_allow = #{isAllow}
+			</if>
+			<if test="buyStyle !=null">
+				AND buy_style = #{buyStyle}
+			</if>
+			<if test="goldpay !=null">
+				AND goldpay = #{goldpay}
+			</if>
+		</where>
+	</select>
+	<!-- 通用查询映射结果 -->
+	<resultMap id="shopAdvMap"
+		type="com.hzitxx.hitao.entity.ShopAdv">
+		<id column="adv_id" property="advId" />
+		<result column="ap_id" property="apId" />
+		<result column="adv_title" property="advTitle" />
+		<result column="adv_content" property="advContent" />
+		<result column="adv_start_date" property="advStartDate" />
+		<result column="adv_end_date" property="advEndDate" />
+		<result column="slide_sort" property="slideSort" />
+		<result column="member_id" property="memberId" />
+		<result column="member_name" property="memberName" />
+		<result column="click_num" property="clickNum" />
+		<result column="is_allow" property="isAllow" />
+		<result column="buy_style" property="buyStyle" />
+		<result column="goldpay" property="goldpay" />
+	</resultMap>
+</mapper>
