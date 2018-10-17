@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.hzitxx.hitao.entity.ShopAdv;
 import com.hzitxx.hitao.entity.ShopArticle;
-import com.hzitxx.hitao.service.marketing.ShopAdvService;
 import com.hzitxx.hitao.service.marketing.ShopArticleService;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;

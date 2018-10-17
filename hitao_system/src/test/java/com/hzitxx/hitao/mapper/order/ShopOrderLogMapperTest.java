@@ -1,6 +1,5 @@
 package com.hzitxx.hitao.mapper.order;
 
-import static org.mockito.Matchers.longThat;
 
 import java.util.Date;
 import java.util.HashMap;

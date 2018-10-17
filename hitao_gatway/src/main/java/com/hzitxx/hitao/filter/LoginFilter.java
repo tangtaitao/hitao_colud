@@ -59,7 +59,7 @@ public class LoginFilter extends ZuulFilter {
 		// 设置返回信息的格式
 		response.setContentType("application/json;charset=utf-8");
 		// 获取token值
-		String token = request.getParameter("token");
+		String token = request.getHeader("token");
 		// 判断token是否为空
 		if (StringUtils.isEmpty(token)) {
 			// 为空则拦截请求

@@ -1,6 +1,5 @@
 package com.hzitxx.hitao.mapper.marketing;
 
-import static org.mockito.Matchers.longThat;
 
 import java.util.HashMap;
 import java.util.List;

@@ -2,7 +2,6 @@ package com.hzitxx.hitao.service.marketing;
 
 import java.util.Map;
 
-import com.hzitxx.hitao.entity.ShopAdv;
 import com.hzitxx.hitao.entity.ShopAdvClick;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
