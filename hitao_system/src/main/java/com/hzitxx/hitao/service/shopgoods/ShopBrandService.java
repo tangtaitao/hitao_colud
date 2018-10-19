@@ -1,5 +1,6 @@
 package com.hzitxx.hitao.service.shopgoods;
 
+import java.util.List;
 import java.util.Map;
 
 import com.hzitxx.hitao.entity.ShopBrand;
@@ -47,4 +48,11 @@ public interface ShopBrandService {
 	 * @return
 	 */
 	ServerResponse<?> deleteByIds(String[] ids);
+
+	/**
+	 * 根据id查询
+	 * @param map
+	 * @return
+	 */
+	ServerResponse<List<ShopBrand>> getByClassId(Map<String, Object> map);
 }

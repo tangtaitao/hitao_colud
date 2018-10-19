@@ -90,4 +90,13 @@ public class ShopBrandServiceImpl implements ShopBrandService {
         }
         return ServerResponse.createBySuccessMessage("批量删除成功!");
     }
+
+	/**
+	 * 根据id查询
+	 */
+	@Override
+	public ServerResponse<List<ShopBrand>> getByClassId(Map<String, Object> map) {
+		List<ShopBrand> shopBrands = mapper.selectShopBrand(map);
+		return ServerResponse.createBySuccess(shopBrands);
+	}
 }
