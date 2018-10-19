@@ -34,7 +34,7 @@ public interface ShopAdminMapper {
 	 * @param map
 	 * @return
 	 */
-	public List<ShopAdmin> findAll();
+	public List<ShopAdmin> findAll(Map<String, Object> map);
 	/**
 	 * 根据ID查询数据
 	 * @param adminId

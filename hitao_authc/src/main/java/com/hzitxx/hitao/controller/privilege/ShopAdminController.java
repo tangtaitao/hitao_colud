@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.ws.rs.GET;
+
 import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +29,14 @@ public class ShopAdminController {
 	@Autowired
 	private ShopAdminService service;
 
-	// post提交方式
+	// get提交方式
 	@GetMapping("/page")
 	@ResponseBody
-	public ServerResponse<LayuiEntity<ShopAdmin>> page(int page, int limit) {
-		return service.LayuiEntity(page, limit);
+	public ServerResponse<LayuiEntity<ShopAdmin>> page(String adminName, int page, int limit) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("adminName", adminName);
+		System.out.println(adminName);
+		return service.LayuiEntity(map, page, limit);
 	}
 
 	@PostMapping("/addAdmin")
@@ -62,6 +67,29 @@ public class ShopAdminController {
 	@ResponseBody
 	public ServerResponse<Map<String, Object>> login(@RequestBody ShopAdmin shopAdmin) {
 		return service.login(shopAdmin);
+	}
+
+	/**
+	 * 批量删除
+	 */
+	@GetMapping("/removeBatch")
+	@ResponseBody
+	public ServerResponse<Integer> removeBatch(String adminIds) {
+		String[] split = adminIds.split(",");
+		ServerResponse<Integer> serverResponse = null;
+		for (int i = 0; i < split.length; i++) {
+			serverResponse = service.deleteAdmin(Integer.parseInt(split[i]));
+		}
+		return serverResponse;
+	}
+
+	/**
+	 * 判断用户名是否存在
+	 */
+	@GetMapping("/checkExists")
+	@ResponseBody
+	public ServerResponse<Integer> checkExists(String adminName) {
+		return service.checkExists(adminName);
 	}
 
 	/**

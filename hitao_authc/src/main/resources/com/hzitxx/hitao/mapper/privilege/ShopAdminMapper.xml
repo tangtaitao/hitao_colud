@@ -1,23 +1,35 @@
-﻿<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzitxx.hitao.mapper.privilege.ShopAdminMapper">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.privilege.ShopAdminMapper">
 	<!-- 查询所有用户信息 -->
-	<select id="findAll" resultMap="shopAdminMap" parameterType="map">
+	<select id="findAll" resultMap="shopAdminMap"
+		parameterType="map">
 		select admin_id,admin_name,admin_password,admin_login_num,
 		login_ip,login_status,email,is_del,login_time,action_list,
-		nav_list,created_by,created_time,updated_by,updated_time 
-		from shop_admin
+		nav_list,created_by,created_time,updated_by,updated_time
+		from
+		shop_admin
+		<where>
+			<if test="adminName!=null and adminName!=''">
+				admin_name=#{adminName}
+			</if>
+		</where>
 	</select>
-	<select id="findOne" resultMap="shopAdminMap" parameterType="map">
-		select admin_id,admin_name,admin_password,admin_login_num,
+	<select id="findOne" resultMap="shopAdminMap"
+		parameterType="map">
+		select
+		admin_id,admin_name,admin_password,admin_login_num,
 		login_ip,login_status,email,is_del,login_time,action_list,
-		nav_list,created_by,created_time,updated_by,updated_time 
-		from shop_admin where admin_id=#{adminId}
+		nav_list,created_by,created_time,updated_by,updated_time
+		from
+		shop_admin where admin_id=#{adminId}
 	</select>
 	<!-- 增加用户信息 -->
-	<insert id="addAdmin" parameterType="com.hzitxx.hitao.entity.ShopAdmin">
+	<insert id="addAdmin"
+		parameterType="com.hzitxx.hitao.entity.ShopAdmin">
 		insert into shop_admin
 		(admin_id,admin_name,admin_password,admin_login_num,
 		login_ip,login_status,email,is_del,login_time,action_list,
@@ -26,41 +38,45 @@
 		#{email},#{isDel},#{loginTime},#{actionList},#{navList},#{createdBy},#{createdTime})
 	</insert>
 	<!-- 修改用户信息 -->
-	<update id="updateAdmin" parameterType="com.hzitxx.hitao.entity.ShopAdmin">
-		update shop_admin set 
+	<update id="updateAdmin"
+		parameterType="com.hzitxx.hitao.entity.ShopAdmin">
+		update shop_admin set
 		admin_name=#{adminName},admin_password=MD5(#{adminPassword}),admin_login_num=#{adminLoginNum},
 		login_ip=#{loginIp},login_status=#{loginStatus},email=#{email},is_del=#{isDel},login_time=#{loginTime},action_list=#{actionList},
-		nav_list=#{navList},updated_by=#{updatedBy},updated_time=#{updatedTime} 
+		nav_list=#{navList},updated_by=#{updatedBy},updated_time=#{updatedTime}
 		where admin_id=#{adminId};
 	</update>
 	<!-- 删除用户信息 -->
-	<delete id="deleteAdmin" parameterType="com.hzitxx.hitao.entity.ShopAdmin">
+	<delete id="deleteAdmin"
+		parameterType="com.hzitxx.hitao.entity.ShopAdmin">
 		delete from shop_admin where admin_id=#{adminId};
 	</delete>
 	<select id="login" resultMap="shopAdminMap" parameterType="map">
 		select admin_id,admin_name,admin_password,admin_login_num,
 		login_ip,login_status,email,is_del,login_time,action_list,
-		nav_list,created_by,created_time,updated_by,updated_time 
 		from shop_admin where admin_name=#{adminName} and admin_password=MD5(#{adminPassword})
 	</select>
-	<select id="findAdminName" resultType="Integer" parameterType="java.lang.String">
-		select count(0) from shop_admin where admin_name=#{adminName}
+	<select id="findAdminName" resultType="Integer"
+		parameterType="java.lang.String">
+		select count(0) from shop_admin where
+		admin_name=#{adminName}
 	</select>
-	<resultMap type="com.hzitxx.hitao.entity.ShopAdmin" id="shopAdminMap">
-		<id column="admin_id" property="adminId"/>
-		<result column="admin_name" property="adminName"/>
-		<result column="admin_password" property="adminPassword"/>
-		<result column="admin_login_num" property="adminLoginNum"/>
-		<result column="login_ip" property="loginIp"/>
-		<result column="login_status" property="loginStatus"/>
-		<result column="email" property="email"/>
-		<result column="is_del" property="isDel"/>
-		<result column="login_time" property="loginTime"/>
-		<result column="action_list" property="actionList"/>
-		<result column="nav_list" property="navList"/>
-		<result column="created_by" property="createdBy"/>
-		<result column="created_time" property="createdTime"/>
-		<result column="updated_by" property="updatedBy"/>
-		<result column="updated_time" property="updatedTime"/>
+	<resultMap type="com.hzitxx.hitao.entity.ShopAdmin"
+		id="shopAdminMap">
+		<id column="admin_id" property="adminId" />
+		<result column="admin_name" property="adminName" />
+		<result column="admin_password" property="adminPassword" />
+		<result column="admin_login_num" property="adminLoginNum" />
+		<result column="login_ip" property="loginIp" />
+		<result column="login_status" property="loginStatus" />
+		<result column="email" property="email" />
+		<result column="is_del" property="isDel" />
+		<result column="login_time" property="loginTime" />
+		<result column="action_list" property="actionList" />
+		<result column="nav_list" property="navList" />
+		<result column="created_by" property="createdBy" />
+		<result column="created_time" property="createdTime" />
+		<result column="updated_by" property="updatedBy" />
+		<result column="updated_time" property="updatedTime" />
 	</resultMap>
 </mapper>
