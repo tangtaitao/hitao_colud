@@ -15,16 +15,14 @@
 	<!-- 增加用户信息 -->
 	<insert id="addRole" parameterType="com.hzitxx.hitao.entity.ShopRole">
 		insert into shop_role
-		(role_id,role_name,role_description,created_time,created_by,
-		updated_time,updated_by)
-		values(#{roleId},#{roleName},#{roleDescription},#{createdTime},#{createdBy},#{updatedTime},
-		#{updatedBy})
+		(role_id,role_name,role_description,created_time,created_by)
+		values(#{roleId},#{roleName},#{roleDescription},#{createdTime},#{createdBy})
 	</insert>
 	<!-- 修改用户信息 -->
 	<update id="updateRole" parameterType="com.hzitxx.hitao.entity.ShopRole">
 		update shop_role set 
-		role_id=#{roleId},role_name=#{roleName},role_description=#{roleDescription},created_time=#{createdTime},created_by=#{createdBy},
-		updated_time=#{updatedTime},updated_by=#{updatedBy}
+		role_name=#{roleName},role_description=#{roleDescription},
+		updated_time=#{updatedTime},updated_by=#{updatedBy} 
 		 where role_id=#{roleId};
 	</update>
 	<!-- 删除用户信息 -->

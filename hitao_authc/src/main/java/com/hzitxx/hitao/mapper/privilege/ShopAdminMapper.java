@@ -34,13 +34,13 @@ public interface ShopAdminMapper {
 	 * @param map
 	 * @return
 	 */
-	public List<ShopAdmin> findAll();
+	public List<ShopAdmin> findAll(Map<String, Object> map);
 	/**
 	 * 根据ID查询数据
 	 * @param adminId
 	 * @return
 	 */
-	public List<ShopAdmin> findOne(Integer adminId);
+	public ShopAdmin findOne(Integer adminId);
 	/**
 	 * 登录
 	 * @return

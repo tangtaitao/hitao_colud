@@ -2,7 +2,6 @@ package com.hzitxx.hitao.service.order;
 
 import java.util.Map;
 
-import org.springframework.stereotype.Service;
 /**
  * 处理shop_transport的操作
  * @author Administrator

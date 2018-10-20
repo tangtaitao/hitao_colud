@@ -10,8 +10,8 @@ import com.github.pagehelper.PageInfo;
 import com.hzitxx.hitao.entity.ShopRole;
 import com.hzitxx.hitao.mapper.privilege.ShopRoleMapper;
 import com.hzitxx.hitao.service.privilege.ShopRoleService;
-import com.hzitxx.hitao.utils.ServerResponse;
 import com.hzitxx.hitao.utils.LayuiEntity;
+import com.hzitxx.hitao.utils.ServerResponse;
 @Service
 public class ShopRoleServiceImpl implements ShopRoleService {
 	@Autowired
@@ -47,9 +47,9 @@ public class ShopRoleServiceImpl implements ShopRoleService {
 	}
 
 	@Override
-	public ServerResponse<List<ShopRole>> findOne(Integer roleId) {
-		List<ShopRole> list=mapper.findOne(roleId);
-		return ServerResponse.createBySuccess(list);
+	public ServerResponse<ShopRole> findOne(Integer roleId) {
+		ShopRole findOne = mapper.findOne(roleId);
+		return ServerResponse.createBySuccess(findOne);
 	}
 
 	@Override

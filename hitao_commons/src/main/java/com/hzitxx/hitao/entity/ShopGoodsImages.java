@@ -1,7 +1,6 @@
 package com.hzitxx.hitao.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 /**
  * <p>
  * 商品图片

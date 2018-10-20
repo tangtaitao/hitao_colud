@@ -1,7 +1,5 @@
 package com.hzitxx.hitao.mapper.order;
 
-import static org.mockito.Matchers.longThat;
-import static org.mockito.Matchers.startsWith;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -16,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.hzitxx.hitao.entity.ShopOrderGoods;
-import com.hzitxx.hitao.entity.ShopOrderLog;
 import com.hzitxx.hitao.mapper.order.ShopOrderGoodsMapper;
 
 /**

@@ -34,5 +34,5 @@ public interface ShopRoleService {
 	 * @param roleId
 	 * @return
 	 */
-	public ServerResponse<List<ShopRole>> findOne(Integer roleId);
+	public ServerResponse<ShopRole> findOne(Integer roleId);
 }
