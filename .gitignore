@@ -1,9 +1,6 @@
 .settings
 .project
 target
-/hitao_member/.classpath
-
-
-application.properties
-/hitao_member/src/main/resources/application.properties
-/hitao_gatway/src/main/resources/application.properties
+classes
+/hitao_member/target
+/hitao_commons/target

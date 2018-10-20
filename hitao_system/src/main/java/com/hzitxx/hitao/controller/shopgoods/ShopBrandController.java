@@ -2,6 +2,7 @@ package com.hzitxx.hitao.controller.shopgoods;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,17 @@ public class ShopBrandController {
 	private ShopBrandService service;
 
 	/**
+	 * 根据id查询
+	 * 
+	 * @return
+	 */
+	@GetMapping("/getByClassId")
+	public ServerResponse<List<ShopBrand>> getByClassId(Integer classId) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("classId", classId);
+		return service.getByClassId(map);
+	}
+	/**
 	 * 获取商品品牌信息
 	 * 
 	 * @return
@@ -41,7 +53,6 @@ public class ShopBrandController {
 		Map<String, Object> map = new HashMap<>();
 		return service.selectShopBrand(map);
 	}
-
 	/**
 	 * 增加商品品牌
 	 * 

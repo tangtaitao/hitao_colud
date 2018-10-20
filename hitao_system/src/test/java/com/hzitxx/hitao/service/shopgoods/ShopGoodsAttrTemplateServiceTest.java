@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.hzitxx.hitao.SystemMicroService8083;
 import com.hzitxx.hitao.entity.ShopGoodsAttrTemplate;
-import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
 
 /**
@@ -61,7 +60,7 @@ public class ShopGoodsAttrTemplateServiceTest {
 	 */
 	@Test
 	public void testSelectShopGoodsAttrTemplate() {
-		ServerResponse<LayuiEntity<ShopGoodsAttrTemplate>> list = service.selectShopGoodsAttrTemplate(null);
-		System.out.println(list.getData().getData());
+		ServerResponse<String> list = service.selectShopGoodsAttrTemplate(null);
+		System.out.println(list.getData());
 	}
 }

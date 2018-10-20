@@ -1,5 +1,6 @@
 package com.hzitxx.hitao.service.others;
 
+import java.util.List;
 import java.util.Map;
 
 import com.hzitxx.hitao.entity.GatewayApiDefine;
@@ -18,7 +19,7 @@ public interface GatewayApiDefineService {
 	 * @param map
 	 * @return
 	 */
-	ServerResponse<LayuiEntity<GatewayApiDefine>> selectGatewayApiDefine(Map<String, Object> map );
+	ServerResponse<LayuiEntity<GatewayApiDefine>> selectGatewayApiDefine(int page,int limit,Map<String, Object> map );
 	
 	/**
 	 * 增加网关信息
@@ -40,4 +41,11 @@ public interface GatewayApiDefineService {
 	 * @return
 	 */
 	ServerResponse<?> deleteById(Integer id);
+
+	/**
+	 * 根据id获取网关信息
+	 * @param map
+	 * @return
+	 */
+	ServerResponse<List<GatewayApiDefine>> findOne(Map<String, Object> map);
 }

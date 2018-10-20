@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSON;
 import com.hzitxx.hitao.entity.ShopGoodsAttrTemplate;
 import com.hzitxx.hitao.service.shopgoods.ShopGoodsAttrTemplateService;
-import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
+import com.hzitxx.hitao.utils.ShopCategoryUtils;
 
 /**
  * 商品属性模板控制层
@@ -37,33 +38,37 @@ public class ShopGoodsAttrTemplateController {
 	 * @return
 	 */
 	@GetMapping("/getPage")
-	public ServerResponse<LayuiEntity<ShopGoodsAttrTemplate>> getPage() {
+	public ServerResponse<String> getPage(ShopGoodsAttrTemplate shopGoodsAttrTemplate) {
 		Map<String, Object> map = new HashMap<>();
+		map.put("catId", shopGoodsAttrTemplate.getCatId());
 		return service.selectShopGoodsAttrTemplate(map);
 	}
 
 	/**
-	 * 增加商品属性模板
-	 * 
-	 * @param shopGoodsAttrTemplate
-	 * @return
-	 */
-	@PostMapping("/addShopGoodsAttrTemplate")
-	public ServerResponse<?> addShopGoodsAttrTemplate(@RequestBody ShopGoodsAttrTemplate shopGoodsAttrTemplate) {
-		shopGoodsAttrTemplate.setCreatedTime(new Date());
-		return service.addShopGoodsAttrTemplate(shopGoodsAttrTemplate);
-	}
-
-	/**
-	 * 编辑商品属性模板信息
+	 * 编辑商品属性模板
 	 * 
 	 * @param shopGoodsAttrTemplate
 	 * @return
 	 */
 	@PostMapping("/updateById")
+	public ServerResponse<?> updateById(@RequestBody ShopCategoryUtils shopCategoryUtils) {
+		ShopGoodsAttrTemplate shopGoodsAttrTemplate=new ShopGoodsAttrTemplate();
+		shopGoodsAttrTemplate.setCreatedTime(new Date());
+		shopGoodsAttrTemplate.setCatId(Integer.parseInt(shopCategoryUtils.getCatId()));
+		shopGoodsAttrTemplate.setAttrValue(JSON.toJSONString(shopCategoryUtils.getAttrTemp()));
+		return service.updateById(shopGoodsAttrTemplate);
+	}
+
+	/**
+	 * 增加商品属性模板信息
+	 * 
+	 * @param shopGoodsAttrTemplate
+	 * @return
+	 */
+	@PostMapping("/addShopGoodsAttrTemplate")
 	public ServerResponse<?> updateById(@RequestBody ShopGoodsAttrTemplate shopGoodsAttrTemplate) {
 		shopGoodsAttrTemplate.setUpdatedTime(new Date());
-		return service.updateById(shopGoodsAttrTemplate);
+		return service.addShopGoodsAttrTemplate(shopGoodsAttrTemplate);
 	}
 
 	/**

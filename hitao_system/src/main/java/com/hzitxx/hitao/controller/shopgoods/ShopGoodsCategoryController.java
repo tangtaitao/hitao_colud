@@ -2,6 +2,7 @@ package com.hzitxx.hitao.controller.shopgoods;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,17 @@ public class ShopGoodsCategoryController {
 		return service.selectShopGoodsCategory(map);
 	}
 	
+	
+	/**
+	 * 根据父id查询
+	 * @return
+	 */
+	@GetMapping("/findByPId")
+	public ServerResponse<List<ShopGoodsCategory>> findByPId(Integer pId) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("parentId", pId);
+		return service.findByPId(map);
+	}
 	/**
 	 * 增加商品分类
 	 * @param shopGoodsCategory

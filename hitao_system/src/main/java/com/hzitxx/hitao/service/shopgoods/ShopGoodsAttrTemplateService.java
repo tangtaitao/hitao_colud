@@ -3,7 +3,6 @@ package com.hzitxx.hitao.service.shopgoods;
 import java.util.Map;
 
 import com.hzitxx.hitao.entity.ShopGoodsAttrTemplate;
-import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
 
 /**
@@ -42,5 +41,5 @@ public interface ShopGoodsAttrTemplateService {
 	 * @param map
 	 * @return
 	 */
-	ServerResponse<LayuiEntity<ShopGoodsAttrTemplate>> selectShopGoodsAttrTemplate(Map<String, Object> map);
+	ServerResponse<String> selectShopGoodsAttrTemplate(Map<String, Object> map);
 }

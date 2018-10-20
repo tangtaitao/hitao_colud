@@ -7,26 +7,19 @@
 		<artifactId>hitao_cloud</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>hitao_system</artifactId>
 	<dependencies>
-		<!-- 引用Commons项目中的类 -->
+	<!-- 引用Commons项目中的类 -->
 		<dependency>
 			<groupId>com.hzit.hitao_cloud</groupId>
 			<artifactId>hitao_commons</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- 分页查询jar包 -->
+	<!-- OSS文件管理jar包 -->
 		<dependency>
-			<groupId>com.github.pagehelper</groupId>
-			<artifactId>pagehelper-spring-boot-starter</artifactId>
-			<version>1.2.5</version>
-		</dependency>
-		
-		<!--fastjson -->
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>fastjson</artifactId>
-			<version>1.2.47</version>
+			<groupId>com.aliyun.oss</groupId>
+			<artifactId>aliyun-sdk-oss</artifactId>
+			<version>2.8.3</version>
 		</dependency>
 	</dependencies>
+	<artifactId>hitao_fileupload</artifactId>
 </project>

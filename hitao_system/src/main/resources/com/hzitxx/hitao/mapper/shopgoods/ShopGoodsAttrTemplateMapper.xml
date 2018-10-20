@@ -67,12 +67,6 @@
 		parameterType="com.hzitxx.hitao.entity.ShopGoodsAttrTemplate">
 		UPDATE shop_goods_attr_template
 		<set>
-			<if test="attrId != null">
-				attr_id = #{attrId},
-			</if>
-			<if test="catId != null">
-				cat_id = #{catId},
-			</if>
 			<if test="attrValue != null">
 				attr_value = #{attrValue},
 			</if>
@@ -87,7 +81,7 @@
 			</if>
 		</set>
 		WHERE
-		attr_id = #{attrId}
+		cat_id = #{catId}
 	</update>
 	<!--查询数据 -->
 	<select id="selectShopGoodsAttrTemplate" parameterType="map"

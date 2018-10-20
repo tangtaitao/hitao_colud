@@ -27,7 +27,7 @@ public class GatewayApiDefineServiceTest {
 	 */
 	@Test
 	public void testSelectGatewayApiDefine() {
-		ServerResponse<LayuiEntity<GatewayApiDefine>> list =service.selectGatewayApiDefine(null);
+		ServerResponse<LayuiEntity<GatewayApiDefine>> list =service.selectGatewayApiDefine(1, 10, null);
 		System.out.println(list.getData().getData());
 	}
 	

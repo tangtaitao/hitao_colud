@@ -53,11 +53,8 @@
 	</delete>
 	<select id="login" resultMap="shopAdminMap" parameterType="map">
 		select admin_id,admin_name,admin_password,admin_login_num,
-		login_ip,login_status,email,is_del,login_time,action_list,
-		nav_list,created_by,created_time,updated_by,updated_time
-		from
-		shop_admin where admin_name=#{adminName} and
-		admin_password=MD5(#{adminPassword})
+		login_ip,login_status,email,is_del,login_time,action_list,nav_list,created_time,created_by,updated_by,updated_time
+		from shop_admin where admin_name=#{adminName} and admin_password=MD5(#{adminPassword})
 	</select>
 	<select id="findAdminName" resultType="Integer"
 		parameterType="java.lang.String">

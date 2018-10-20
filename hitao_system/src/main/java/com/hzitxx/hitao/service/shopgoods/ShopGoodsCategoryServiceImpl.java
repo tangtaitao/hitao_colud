@@ -83,4 +83,13 @@ public class ShopGoodsCategoryServiceImpl implements ShopGoodsCategoryService {
 		}
 		return ServerResponse.createBySuccessMessage("删除成功!");
 	}
+
+	/**
+	 * 根据父id查询
+	 */
+	@Override
+	public ServerResponse<List<ShopGoodsCategory>> findByPId(Map<String, Object> map) {
+		List<ShopGoodsCategory> shopGoodsCategories = mapper.selectShopGoodsCategory(map);
+		return ServerResponse.createBySuccess(shopGoodsCategories);
+	}
 }
