@@ -5,3 +5,4 @@
 /hitao_gatway/src/main/resources/*.properties
 /hitao_member/src/main/resources/*.properties
 target
+/hitao_member/.classpath
