@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.hzitxx.hitao.SystemMicroService8083;
 import com.hzitxx.hitao.entity.ShopGoods;
 import com.hzitxx.hitao.mapper.shopgoods.ShopGoodsMapper;
+import com.hzitxx.hitao.utils.ShopGoodsUtils;
 
 /**
  * 测试ShopGoodsMapper
@@ -70,5 +71,14 @@ public class ShopGoodsTest {
 	public void testDeleteById() {
 		int result=mapper.deleteById(26);
 		System.out.println(result);
+	}
+	
+	/**
+	 * 测试根据id查询
+	 */
+	@Test
+	public void testFindOne() {
+		List<ShopGoodsUtils> shopGoodsUtils=mapper.findOne(4);
+		System.out.println(shopGoodsUtils);
 	}
 }

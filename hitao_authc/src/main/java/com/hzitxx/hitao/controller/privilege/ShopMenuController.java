@@ -1,8 +1,6 @@
 package com.hzitxx.hitao.controller.privilege;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,7 +29,7 @@ public class ShopMenuController {
 
 	@GetMapping("/inquire")
 	@ResponseBody
-	public ServerResponse<List<ShopMenu>> inquire(Integer id) {
+	public ServerResponse<ShopMenu> inquire(Integer id) {
 		return service.findOne(id);
 	}
 

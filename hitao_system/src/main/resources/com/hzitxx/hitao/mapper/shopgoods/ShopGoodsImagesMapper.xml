@@ -86,7 +86,7 @@
 			</if>
 		</set>
 		WHERE
-		goods_image_id = #{goodsImageId}
+		goods_id = #{goodsId}
 	</update>
 	<!--查询数据 -->
 	<select id="selectShopGoodsImages" parameterType="map"

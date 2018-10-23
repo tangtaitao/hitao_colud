@@ -50,21 +50,21 @@ public class UploadImageController {
 	 * @return
 	 */
 	@PostMapping("/uploadImages")
-	public ServerResponse<String> uploadImage(@RequestParam("file") MultipartFile file) {
-		if (file == null) {
+	public ServerResponse<String> uploadImage(@RequestParam("goodsImages") MultipartFile goodsImages) {
+		if (goodsImages == null) {
 			return ServerResponse.createByErrorMessage("文件上传失败!");
 		}
 		String fileName = null;
 		try {
 			OSSClient client = new OSSClient("http://" + endPoint, accessKeyId, accessKeySecret);
 			// 上传文件
-			fileName = UUID.randomUUID().toString() + file.getOriginalFilename();
-			PutObjectResult result = client.putObject("hitao-images", fileName, file.getInputStream());
+			fileName = UUID.randomUUID().toString() + goodsImages.getOriginalFilename();
+			PutObjectResult result = client.putObject("hitao-image", fileName, goodsImages.getInputStream());
 			System.out.println(result.getETag());
 			System.out.println(result.getResponse()); // 获取响应结果
 			// "https://你的BucketName.你的Endpoint/自定义路径/" + fileName;
 			String url = "https://bucketName.endPoint/fileName";
-			url = url.replace("bucketName", "hitao-images");
+			url = url.replace("bucketName", "hitao-image");
 			url = url.replace("endPoint", endPoint);
 			url = url.replace("fileName", fileName);
 			return ServerResponse.createBySuccess("图片上传成功!", url);

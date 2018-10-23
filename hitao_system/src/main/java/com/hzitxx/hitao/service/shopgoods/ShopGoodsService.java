@@ -5,9 +5,11 @@ import java.util.Map;
 import com.hzitxx.hitao.entity.ShopGoods;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
+import com.hzitxx.hitao.utils.ShopGoodsUtils;
 
 /**
  * 商品信息服务层接口
+ * 
  * @author wujun
  *
  */
@@ -26,19 +28,29 @@ public interface ShopGoodsService {
 	 * @param goods
 	 * @return
 	 */
-	ServerResponse<?> addShopGoods(ShopGoods goods);
+	ServerResponse<?> addShopGoods(ShopGoodsUtils shopGoodsUtils);
 
 	/**
 	 * 更新goods
-	 * @param goods
+	 * 
+	 * @param shopGoodsUtils
 	 * @return
 	 */
-	ServerResponse<?> updateShopGoods(ShopGoods goods);
-	
+	ServerResponse<?> updateShopGoods(ShopGoodsUtils shopGoodsUtils);
+
 	/**
 	 * 根据ID物理删除
+	 * 
 	 * @param goodsId
 	 * @return
 	 */
 	ServerResponse<?> deleteById(Integer goodsId);
+
+	/**
+	 * 根据id查询
+	 * 
+	 * @param goodsId
+	 * @return
+	 */
+	ServerResponse<ShopGoodsUtils> findOne(Integer goodsId);
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.member.ShopAreaMapper">
+	<!-- 查询所有数据 -->
+	<select id="selectAll" parameterType="map" resultMap="selectAllMap">
+		select
+		<include refid="sql"></include>
+		from shop_area
+		<where>
+			<if test="areaDeep!=null">
+				area_deep=#{areaDeep}
+			</if>
+			<if test="areaName!=null">
+				and area_name=#{areaName}
+			</if>
+		</where>
+	</select>
+	<!-- 根据id查询数据 -->
+	<select id="selectOne" parameterType="int" resultMap="selectAllMap">
+		select 
+		<include refid="sql"></include>
+		from shop_area where area_id=#{areaId};
+	</select> 
+	<!-- 根据区域名称查询父级区域 -->
+	<select id="findShopArea" parameterType="String" resultMap="selectAllMap">
+		select 
+		<include refid="sql"></include>
+		 from shop_area where area_name=#{areaName};
+	</select>
+	<!-- 增加数据 -->
+	<insert id="add" parameterType="com.hzitxx.hitao.entity.ShopArea">
+		insert into shop_area(area_id,area_name,area_parent_id,area_sort,post_code,area_deep,is_del,created_time,updated_time) 
+		values(#{areaId},#{areaName},#{areaParentId},#{areaSort},#{postCode},#{areaDeep},#{isDel},#{createdTime},#{updatedTime});
+	</insert>
+	<!-- 修改数据 -->
+	<update id="updateById" parameterType="com.hzitxx.hitao.entity.ShopArea">
+		update shop_area set area_id=#{areaId},area_name=#{areaName},area_parent_id=#{areaParentId},area_sort=#{areaSort},post_code=#{postCode},
+		area_deep=#{areaDeep},is_del=#{isDel},created_time=#{createdTime},updated_time=#{updatedTime} where area_id=#{areaId};
+	</update>
+	<!-- 删除数据 -->
+	<delete id="deleteById" parameterType="int">
+		delete from shop_area where area_id=#{areaId};
+	</delete>
+	<!-- 逻辑删除数据 -->
+	<update id="delete" parameterType="com.hzitxx.hitao.entity.ShopArea">
+		update shop_area set is_del=#{isDel} where area_id=#{areaId};
+	</update>	
+	<sql id="sql">
+		area_id,area_name,area_parent_id,area_sort,post_code,
+		area_deep,is_del,created_time,updated_time
+	</sql>
+	<resultMap type="com.hzitxx.hitao.entity.ShopArea" id="selectAllMap">
+		<id column="area_id" property="areaId"/>
+		<result column="area_name" property="areaName"/>
+		<result column="area_parent_id" property="areaParentId"/>
+		<result column="area_sort" property="areaSort"/>
+		<result column="post_code" property="postCode"/>
+		<result column="area_deep" property="areaDeep"/>
+		<result column="is_del" property="isDel"/>
+		<result column="created_time" property="createdTime"/>
+		<result column="updated_time" property="updatedTime"/>
+	</resultMap>
+</mapper>

@@ -1,6 +1,5 @@
 package com.hzitxx.hitao.controller.shopgoods;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,9 +21,11 @@ import com.hzitxx.hitao.entity.ShopGoods;
 import com.hzitxx.hitao.service.shopgoods.ShopGoodsService;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
+import com.hzitxx.hitao.utils.ShopGoodsUtils;
 
 /**
  * 商品控制层
+ * 
  * @author wujun
  *
  */
@@ -38,48 +39,63 @@ public class ShopGoodsController {
 
 	/**
 	 * 分页查询goods信息
+	 * 
 	 * @param page
 	 * @param limit
 	 * @return
 	 */
 	@GetMapping("/getPage")
 	public ServerResponse<LayuiEntity<ShopGoods>> getPage(@RequestParam(value = "page", defaultValue = "1") int page,
-			@RequestParam(value = "limit", defaultValue = "10") int limit,ShopGoods shopGoods) {
+			@RequestParam(value = "limit", defaultValue = "10") int limit, ShopGoods shopGoods) {
 		Map<String, Object> map = new HashMap<>();
-		map.put("goodsId", shopGoods.getGoodsId());
+		map.put("goodsName", shopGoods.getGoodsName());
 		return service.selectShopGoods(page, limit, map);
 	}
-	
+
+	/**
+	 * 根据id查询数据
+	 * 
+	 * @param goodsId
+	 * @return
+	 */
+	@GetMapping("/findOne")
+	public ServerResponse<ShopGoodsUtils> findOne(Integer goodsId) {
+		return service.findOne(goodsId);
+	}
+
 	/**
 	 * 增加goods
+	 * 
 	 * @param goods
 	 * @return
 	 */
 	@PostMapping("/addShopGoods")
-	public ServerResponse<?> addShopGoods(@RequestBody ShopGoods goods) {
-		goods.setCreatedTime(new Date());
-		return service.addShopGoods(goods);
+	public ServerResponse<?> addShopGoods(@RequestBody ShopGoodsUtils shopGoodsUtils) {
+		System.out.println(shopGoodsUtils);
+		return service.addShopGoods(shopGoodsUtils);
 	}
 
 	/**
 	 * 更新goods信息
+	 * 
 	 * @param goods
 	 * @return
 	 */
 	@PostMapping("/updateShopGoods")
-	public ServerResponse<?> updateShopGoods(@RequestBody ShopGoods goods) {
-		goods.setUpdatedTime(new Date());
-		return service.updateShopGoods(goods);
+	public ServerResponse<?> updateShopGoods(@RequestBody ShopGoodsUtils shopGoodsUtils) {
+		System.out.println(shopGoodsUtils);
+		return service.updateShopGoods(shopGoodsUtils);
 	}
-	
+
 	/**
 	 * 根据id删除
+	 * 
 	 * @param goodsId
 	 * @return
 	 */
 	@GetMapping("/deleteById")
-	public ServerResponse<?> deleteById( Integer goodsId) {
+	public ServerResponse<?> deleteById(Integer goodsId) {
 		return service.deleteById(goodsId);
 	}
-	
+
 }

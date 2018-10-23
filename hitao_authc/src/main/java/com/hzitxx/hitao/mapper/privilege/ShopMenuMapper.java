@@ -42,7 +42,7 @@ public interface ShopMenuMapper {
 	 * @param adminId
 	 * @return
 	 */
-	public List<ShopMenu> findOne(Integer id);
+	public ShopMenu findOne(Integer id);
 
 	/**
 	 * 根据父id查询数据(供树状结构使用)

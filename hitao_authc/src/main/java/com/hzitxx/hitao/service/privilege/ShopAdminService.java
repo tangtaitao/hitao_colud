@@ -50,7 +50,7 @@ public interface ShopAdminService {
 	 * @return
 	 */
 	// public List<ShopAdmin> findOne(Integer adminId);
-	public ServerResponse<List<ShopAdmin>> findOne(Integer adminId);
+	public ServerResponse<ShopAdmin> findOne(Integer adminId);
 
 	/**
 	 * 登录

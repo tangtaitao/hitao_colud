@@ -11,6 +11,7 @@ import com.hzitxx.hitao.SystemMicroService8083;
 import com.hzitxx.hitao.entity.ShopGoods;
 import com.hzitxx.hitao.utils.LayuiEntity;
 import com.hzitxx.hitao.utils.ServerResponse;
+import com.hzitxx.hitao.utils.ShopGoodsUtils;
 
 
 /**
@@ -39,9 +40,14 @@ public class ShopGoodsServiceTest {
 	 */
 	@Test
 	public void testAddShopGoods() {
-		ShopGoods goods = new ShopGoods();
-		goods.setGoodsName("雪碧02");
-		ServerResponse<?> result = service.addShopGoods(goods);
+
+		ShopGoodsUtils shopGoodsUtils=new ShopGoodsUtils();
+		shopGoodsUtils.setGoodsName("haha");
+		shopGoodsUtils.setContent("ceshi");
+		shopGoodsUtils.setGoodsImages(null);
+		shopGoodsUtils.setAttrValue(null);
+		shopGoodsUtils.setGcId(6);
+		ServerResponse<?> result = service.addShopGoods(shopGoodsUtils);
 		System.out.println(result.getMsg());
 	}
 	
@@ -50,11 +56,14 @@ public class ShopGoodsServiceTest {
 	 */
 	@Test
 	public void testUpdateShopGoods() {
-		ShopGoods goods = new ShopGoods();
-		goods.setGoodsId(27);
-		goods.setGoodsName("哇哈哈01");
-		goods.setIsDel(1);//测试逻辑删除
-		ServerResponse<?> result= service.updateShopGoods(goods);
+		ShopGoodsUtils shopGoodsUtils=new ShopGoodsUtils();
+		shopGoodsUtils.setGoodsId(45);
+		shopGoodsUtils.setGoodsName("haha1");
+		shopGoodsUtils.setContent("ceshi1");
+		shopGoodsUtils.setGoodsImages(null);
+		shopGoodsUtils.setAttrValue(null);
+		shopGoodsUtils.setGcId(6);
+		ServerResponse<?> result= service.updateShopGoods(shopGoodsUtils);
 		System.out.println(result.getMsg());
 	}
 	

@@ -65,9 +65,9 @@ public class ShopMenuServiceImpl implements ShopMenuService {
 	}
 
 	@Override
-	public ServerResponse<List<ShopMenu>> findOne(Integer id) {
-		List<ShopMenu> list = mapper.findOne(id);
-		return ServerResponse.createBySuccess(list);
+	public ServerResponse<ShopMenu> findOne(Integer id) {
+		ShopMenu findOne = mapper.findOne(id);
+		return ServerResponse.createBySuccess(findOne);
 	}
 
 	@Override

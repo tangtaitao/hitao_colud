@@ -1,7 +1,6 @@
 package com.hzitxx.hitao.mapper.privilege;
 
 import java.util.List;
-import java.util.Map;
 
 import com.hzitxx.hitao.entity.ShopRole;
 
@@ -33,5 +32,5 @@ public interface ShopRoleMapper {
 	 * @param adminId
 	 * @return
 	 */
-	public List<ShopRole> findOne(Integer roleId);
+	public ShopRole findOne(Integer roleId);
 }

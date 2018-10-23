@@ -40,7 +40,7 @@ public interface ShopAdminMapper {
 	 * @param adminId
 	 * @return
 	 */
-	public List<ShopAdmin> findOne(Integer adminId);
+	public ShopAdmin findOne(Integer adminId);
 	/**
 	 * 登录
 	 * @return

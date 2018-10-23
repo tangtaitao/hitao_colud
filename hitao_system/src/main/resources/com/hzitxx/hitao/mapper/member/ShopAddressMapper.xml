@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.member.ShopAddressMapper">
+	<!-- 查询shop_address中所有数据 -->
+	<select id="selectAll" parameterType="map" resultMap="selectAllMap">
+		select
+		<include refid="sql"></include>
+		from shop_address
+		<where>
+			<if test="memberId!=null">
+				and member_id=#{memberId}
+			</if>
+			<if test="memberName!=null">
+				and member_name=#{memberName}
+			</if>
+		</where>
+
+	</select>
+	<!-- 根据会员编号或者收货人查询数据 -->
+	<!-- <select id="select" parameterType="map" resultMap="selectAllMap"> select 
+		<include refid="sql"></include> from shop_address where <if test="memberId!=null"> 
+		member_id=#{memberId} </if> <if test="memberName!=null"> and member_name=#{memberName}; 
+		</if> </select> -->
+	<!-- 向shop_address中插入数据 -->
+	<insert id="insert"
+		parameterType="com.hzitxx.hitao.entity.ShopAddress">
+		INSERT INTO
+		shop_address(member_name,province_id,city_id,district_id)
+		values(#{memberName},#{provinceId},#{cityId},#{districtId});
+	</insert>
+	<!-- 根据id修改shop_address中的数据 -->
+	<update id="updateById"
+		parameterType="com.hzitxx.hitao.entity.ShopAddress">
+		update shop_address SET member_name=#{memberName} where
+		id=#{id};
+	</update>
+	<!-- 根据id删除数据 -->
+	<delete id="deleteById" parameterType="Integer">
+		DELETE FROM shop_address
+		where id=#{id};
+
+	</delete>
+	<sql id="sql">
+		id,member_id, member_name,province_id,city_id,district_id,
+		full_region,address, tel_number, post_code,is_default
+	</sql>
+	<resultMap type="com.hzitxx.hitao.entity.ShopAddress"
+		id="selectAllMap">
+		<id column="id" property="id" />
+		<result column="member_id" property="memberId" />
+		<result column="member_name" property="memberName" />
+		<result column="province_id" property="provinceId" />
+		<result column="city_id" property="cityId" />
+		<result column="district_id" property="districtId" />
+		<result column="full_region" property="fullRegion" />
+		<result column="address" property="address" />
+		<result column="tel_number" property="telNumber" />
+		<result column="post_code" property="postCode" />
+		<result column="is_default" property="isDefault" />
+
+	</resultMap>
+</mapper>

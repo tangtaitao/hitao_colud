@@ -70,9 +70,9 @@ public class ShopAdminServiceImpl implements ShopAdminService {
 	}
 
 	@Override
-	public ServerResponse<List<ShopAdmin>> findOne(Integer adminId) {
-		List<ShopAdmin> list = mapper.findOne(adminId);
-		return ServerResponse.createBySuccess("查询成功", list);
+	public ServerResponse<ShopAdmin> findOne(Integer adminId) {
+		ShopAdmin findOne = mapper.findOne(adminId);
+		return ServerResponse.createBySuccess("查询成功", findOne);
 	}
 
 	@Override

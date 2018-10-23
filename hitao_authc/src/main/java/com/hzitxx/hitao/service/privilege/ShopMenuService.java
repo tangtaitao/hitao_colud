@@ -44,7 +44,7 @@ public interface ShopMenuService {
 	 * @param adminId
 	 * @return
 	 */
-	public ServerResponse<List<ShopMenu>> findOne(Integer id);
+	public ServerResponse<ShopMenu> findOne(Integer id);
 
 	/**
 	 * 获取树状结构数据

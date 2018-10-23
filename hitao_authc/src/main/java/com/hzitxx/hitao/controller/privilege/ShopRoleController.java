@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,7 +42,7 @@ public class ShopRoleController {
 	 */
 	@GetMapping("/inquire")
 	@ResponseBody
-	public ServerResponse<List<ShopRole>> inquire(Integer roleId) {
+	public ServerResponse<ShopRole> inquire(Integer roleId) {
 		return service.findOne(roleId);
 	}
 
@@ -53,7 +54,7 @@ public class ShopRoleController {
 	 */
 	@PostMapping("/addRole")
 	@ResponseBody
-	public ServerResponse<Integer> addRole(ShopRole shopRole) {
+	public ServerResponse<Integer> addRole(@RequestBody ShopRole shopRole) {
 		return service.addRole(shopRole);
 	}
 
@@ -63,7 +64,7 @@ public class ShopRoleController {
 	 * @param roleId
 	 * @return
 	 */
-	@PostMapping("/deleteRole")
+	@GetMapping("/deleteRole")
 	@ResponseBody
 	public ServerResponse<Integer> deleteRole(Integer roleId) {
 		return service.deleteRole(roleId);
@@ -77,7 +78,8 @@ public class ShopRoleController {
 	 */
 	@PostMapping("updateRole")
 	@ResponseBody
-	public ServerResponse<Integer> updateRole(ShopRole shopRole) {
+	public ServerResponse<Integer> updateRole(@RequestBody ShopRole shopRole) {
+		System.out.println(shopRole);
 		return service.updateRole(shopRole);
 	}
 

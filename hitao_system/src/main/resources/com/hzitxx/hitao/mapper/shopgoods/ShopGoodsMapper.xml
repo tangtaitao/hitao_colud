@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hzitxx.hitao.mapper.shopgoods.ShopGoodsMapper">
+<mapper
+	namespace="com.hzitxx.hitao.mapper.shopgoods.ShopGoodsMapper">
 	<!--shop_goods表中的列 -->
 	<sql id="shopGoodsBaseColumn">
 		goods_id,
@@ -43,95 +44,96 @@
 	</select>
 	<!--基础查询条件 -->
 	<sql id="shopGoodsBaseWhereSql">
-			<where>
-				<if test="goodsId !=null">
-					AND goods_id = #{goodsId}
-				</if>
-				<if test="goodsName !=null">
-					AND goods_name = #{goodsName}
-				</if>
-				<if test="goodsJingle !=null">
-					AND goods_jingle = #{goodsJingle}
-				</if>
-				<if test="gcId !=null">
-					AND gc_id = #{gcId}
-				</if>
-				<if test="brandId !=null">
-					AND brand_id = #{brandId}
-				</if>
-				<if test="goodsPrice !=null">
-					AND goods_price = #{goodsPrice}
-				</if>
-				<if test="goodsMarketprice !=null">
-					AND goods_marketprice = #{goodsMarketprice}
-				</if>
-				<if test="goodsSerial !=null">
-					AND goods_serial = #{goodsSerial}
-				</if>
-				<if test="goodsClick !=null">
-					AND goods_click = #{goodsClick}
-				</if>
-				<if test="goodsSalenum !=null">
-					AND goods_salenum = #{goodsSalenum}
-				</if>
-				<if test="goodsCollect !=null">
-					AND goods_collect = #{goodsCollect}
-				</if>
-				<if test="goodsSpec !=null">
-					AND goods_spec = #{goodsSpec}
-				</if>
-				<if test="goodsStorage !=null">
-					AND goods_storage = #{goodsStorage}
-				</if>
-				<if test="mainImage !=null">
-					AND main_image = #{mainImage}
-				</if>
-				<if test="goodsState !=null">
-					AND goods_state = #{goodsState}
-				</if>
-				<if test="goodsVerify !=null">
-					AND goods_verify = #{goodsVerify}
-				</if>
-				<if test="areaid1 !=null">
-					AND areaid_1 = #{areaid1}
-				</if>
-				<if test="areaid2 !=null">
-					AND areaid_2 = #{areaid2}
-				</if>
-				<if test="colorId !=null">
-					AND color_id = #{colorId}
-				</if>
-				<if test="transportId !=null">
-					AND transport_id = #{transportId}
-				</if>
-				<if test="goodsFreight !=null">
-					AND goods_freight = #{goodsFreight}
-				</if>
-				<if test="goodsVat !=null">
-					AND goods_vat = #{goodsVat}
-				</if>
-				<if test="goodsCommend !=null">
-					AND goods_commend = #{goodsCommend}
-				</if>
-				<if test="evaluationGoodStar !=null">
-					AND evaluation_good_star = #{evaluationGoodStar}
-				</if>
-				<if test="evaluationCount !=null">
-					AND evaluation_count = #{evaluationCount}
-				</if>
-				<if test="isDel !=null">
-					AND is_del = #{isDel}
-				</if>
-				<if test="createdTime !=null">
-					AND created_time = #{createdTime}
-				</if>
-				<if test="updatedTime !=null">
-					AND updated_time = #{updatedTime}
-				</if>
-			</where>
+		<where>
+			<if test="goodsId !=null">
+				AND goods_id = #{goodsId}
+			</if>
+			<if test="goodsName !=null">
+				AND goods_name = #{goodsName}
+			</if>
+			<if test="goodsJingle !=null">
+				AND goods_jingle = #{goodsJingle}
+			</if>
+			<if test="gcId !=null">
+				AND gc_id = #{gcId}
+			</if>
+			<if test="brandId !=null">
+				AND brand_id = #{brandId}
+			</if>
+			<if test="goodsPrice !=null">
+				AND goods_price = #{goodsPrice}
+			</if>
+			<if test="goodsMarketprice !=null">
+				AND goods_marketprice = #{goodsMarketprice}
+			</if>
+			<if test="goodsSerial !=null">
+				AND goods_serial = #{goodsSerial}
+			</if>
+			<if test="goodsClick !=null">
+				AND goods_click = #{goodsClick}
+			</if>
+			<if test="goodsSalenum !=null">
+				AND goods_salenum = #{goodsSalenum}
+			</if>
+			<if test="goodsCollect !=null">
+				AND goods_collect = #{goodsCollect}
+			</if>
+			<if test="goodsSpec !=null">
+				AND goods_spec = #{goodsSpec}
+			</if>
+			<if test="goodsStorage !=null">
+				AND goods_storage = #{goodsStorage}
+			</if>
+			<if test="mainImage !=null">
+				AND main_image = #{mainImage}
+			</if>
+			<if test="goodsState !=null">
+				AND goods_state = #{goodsState}
+			</if>
+			<if test="goodsVerify !=null">
+				AND goods_verify = #{goodsVerify}
+			</if>
+			<if test="areaid1 !=null">
+				AND areaid_1 = #{areaid1}
+			</if>
+			<if test="areaid2 !=null">
+				AND areaid_2 = #{areaid2}
+			</if>
+			<if test="colorId !=null">
+				AND color_id = #{colorId}
+			</if>
+			<if test="transportId !=null">
+				AND transport_id = #{transportId}
+			</if>
+			<if test="goodsFreight !=null">
+				AND goods_freight = #{goodsFreight}
+			</if>
+			<if test="goodsVat !=null">
+				AND goods_vat = #{goodsVat}
+			</if>
+			<if test="goodsCommend !=null">
+				AND goods_commend = #{goodsCommend}
+			</if>
+			<if test="evaluationGoodStar !=null">
+				AND evaluation_good_star = #{evaluationGoodStar}
+			</if>
+			<if test="evaluationCount !=null">
+				AND evaluation_count = #{evaluationCount}
+			</if>
+			<if test="isDel !=null">
+				AND is_del = #{isDel}
+			</if>
+			<if test="createdTime !=null">
+				AND created_time = #{createdTime}
+			</if>
+			<if test="updatedTime !=null">
+				AND updated_time = #{updatedTime}
+			</if>
+		</where>
 	</sql>
 	<!--添加 -->
-	<insert id="addShopGoods"
+	<insert id="addShopGoods" useGeneratedKeys="true"
+		keyColumn="goods_id" keyProperty="goodsId"
 		parameterType="com.hzitxx.hitao.entity.ShopGoods">
 		insert into shop_goods
 		<trim prefix="(" suffix=")" suffixOverrides=",">
@@ -436,5 +438,36 @@
 		<result column="is_del" property="isDel" />
 		<result column="created_time" property="createdTime" />
 		<result column="updated_time" property="updatedTime" />
+	</resultMap>
+
+	<!--根据id查询一条数据 -->
+	<select id="findOne" resultMap="shopGoodsUtils"
+		parameterType="integer">
+		select DISTINCT
+		a.goods_id,a.goods_name,a.goods_jingle,a.gc_id,a.brand_id,a.goods_price,a.goods_marketprice,
+		a.goods_storage,a.main_image,a.goods_commend,b.content,c.attr_value
+		from
+		shop_goods
+		a,shop_goods_content b,shop_goods_attr c
+		WHERE
+		a.goods_id=b.goods_id
+		AND
+		a.goods_id =
+		#{goodsId}
+	</select>
+	<resultMap id="shopGoodsUtils"
+		type="com.hzitxx.hitao.utils.ShopGoodsUtils">
+		<id column="goods_id" property="goodsId" />
+		<result column="goods_name" property="goodsName" />
+		<result column="goods_jingle" property="goodsJingle" />
+		<result column="gc_id" property="gcId" />
+		<result column="brand_id" property="brandId" />
+		<result column="goods_price" property="goodsPrice" />
+		<result column="goods_marketprice" property="goodsMarketprice" />
+		<result column="goods_storage" property="goodsStorage" />
+		<result column="main_image" property="mainImage" />
+		<result column="goods_commend" property="goodsCommand" />
+		<result column="content" property="content" />
+		<result column="attr_value" property="replace" />
 	</resultMap>
 </mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.member.ShopFavoritesMapper">
+	<!-- 查询所有数据 -->
+	<select id="selectAll" resultMap="selectAllMap">
+		select
+		<include refid="sql"></include>
+		from shop_favorites
+	</select>
+	<!-- 根据id查询数据 -->
+	<select id="selectById" parameterType="int" resultMap="selectAllMap">
+		select
+		<include refid="sql"></include>
+		from shop_favorites where fav_id=#{favId};
+	</select>
+	<!-- 增加数据 -->
+	<insert id="add" parameterType="com.hzitxx.hitao.entity.ShopFavorites">
+		insert into shop_favorites(fav_id,goods_id,member_id,fav_type,goods_name,goods_jingle,main_image,fav_time) 
+		values(#{favId},#{goodsId},#{memberId},#{favType},#{goodsName},#{goodsJingle},#{mainImage},#{favTime});
+	</insert>
+	<!-- 根据id修改数据 -->
+	<update id="updateById" parameterType="com.hzitxx.hitao.entity.ShopFavorites">
+		update shop_favorites set fav_id=#{favId},goods_id=#{goodsId},member_id=#{memberId},fav_type=#{favType},goods_name=#{goodsName},
+		goods_jingle=#{goodsJingle},main_image=#{mainImage},fav_time=#{favTime} where fav_id=#{favId};
+	</update>
+	<!-- 根据id删除数据 -->
+	<delete id="deleteById" parameterType="int">
+		delete from shop_favorites where fav_id=#{favId};
+	</delete>
+	<sql id="sql">
+		fav_id,goods_id,member_id,fav_type,goods_name,goods_jingle,main_image,fav_time
+	</sql>
+	<resultMap type="com.hzitxx.hitao.entity.ShopFavorites" id="selectAllMap">
+		<id column="fav_id" property="favId"/>
+		<result column="goods_id" property="goodsId"/>
+		<result column="member_id" property="memberId"/>
+		<result column="fav_type" property="favType"/>
+		<result column="goods_name" property="goodsName"/>
+		<result column="goods_jingle" property="goodsJingle"/>
+		<result column="main_image" property="mainImage"/>
+		<result column="fav_time" property="favTime"/>
+	</resultMap>
+</mapper>

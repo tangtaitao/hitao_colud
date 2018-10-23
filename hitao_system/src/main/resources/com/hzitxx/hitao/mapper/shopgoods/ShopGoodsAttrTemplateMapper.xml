@@ -13,7 +13,7 @@
 		updated_time
 	</sql>
 	<!--添加 -->
-	<insert id="addShopGoodsAttrTemplate"
+	<insert id="addShopGoodsAttrTemplate" useGeneratedKeys="true" keyColumn="attr_id" keyProperty="attrId"
 		parameterType="com.hzitxx.hitao.entity.ShopGoodsAttrTemplate">
 		insert into shop_goods_attr_template
 		<trim prefix="(" suffix=")" suffixOverrides=",">

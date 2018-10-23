@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.ws.rs.GET;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,7 +57,7 @@ public class ShopAdminController {
 
 	@GetMapping("/inquire")
 	@ResponseBody
-	public ServerResponse<List<ShopAdmin>> inquire(Integer adminId) {
+	public ServerResponse<ShopAdmin> inquire(Integer adminId) {
 		return service.findOne(adminId);
 	}
 
@@ -101,13 +99,13 @@ public class ShopAdminController {
 		// 解析token获取登录人的id
 		String adminId = JwtTokenUtil.getUserId(token);
 		// 获取登录人的所有信息
-		ServerResponse<List<ShopAdmin>> findOne = service.findOne(Integer.parseInt(adminId));
+		ServerResponse<ShopAdmin> findOne = service.findOne(Integer.parseInt(adminId));
 		// 获取登录人对象
-		ShopAdmin shopAdmin = findOne.getData().get(0);
+		ShopAdmin shopAdmin = findOne.getData();
 		// 不显示密码
 		shopAdmin.setAdminPassword(null);
 		// 创建一个map集合返回信息
-		Map<String, Object> map = new HashedMap();
+		Map<String, Object> map = new HashMap();
 		// 把登录人信息添加进map中
 		map.put("shopAdmin", shopAdmin);
 		// 添加图片，先写死
@@ -133,4 +131,6 @@ public class ShopAdminController {
 		map2.put("children", children);
 		return ServerResponse.createBySuccess("登录人信息", map);
 	}
+	
+	
 }
