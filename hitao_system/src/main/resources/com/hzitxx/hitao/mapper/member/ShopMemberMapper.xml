@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hzitxx.hitao.mapper.member.ShopMemberMapper">
+	<!-- 查询shop_member中所有数据 -->
+	<select id="selectAll" resultMap="ShopMemberSelectMap">
+		select 
+		<include refid="sql1"></include>
+		 from shop_member
+		
+	</select>
+	<!-- 修改shop_member数据 -->
+	<update id="updateShopMember" parameterType="com.hzitxx.hitao.entity.ShopMember">
+		update shop_member set member_name=#{memberName} where member_id=#{memberId};
+	</update>
+	<!-- 向shop_member中增加数据 -->
+	<insert id="insertShopMember" parameterType="com.hzitxx.hitao.entity.ShopMember">
+		insert into shop_member(member_name,member_truename) values(#{memberName},#{memberTruename});
+	</insert>
+	<!-- 根据id逻辑删除shop_member中数据 -->
+	<update id="deleteById" parameterType="map">
+		update shop_member set 
+		<if test="isDel!=null">
+			is_del=#{isDel} 
+		</if>
+		 where 
+		 <if test="memberId!=null">
+			member_id=#{memberId}; 
+		</if>
+		 
+	</update>
+	<sql id="sql1">
+		member_id ,member_name ,member_truename ,member_avatar ,member_sex ,
+		member_birthday ,member_password ,password_salt ,member_email ,
+		member_login_num ,member_time ,member_login_time ,member_old_login_time ,
+		member_login_ip ,member_old_login_ip ,member_points ,member_mobile ,
+		available_predeposit ,freeze_predeposit ,inform_allow ,
+		is_buy ,is_allowtalk ,member_state ,member_credit ,member_areaid ,
+		member_cityid ,member_provinceid ,member_areainfo ,is_del 
+	</sql>
+	<resultMap type="com.hzitxx.hitao.entity.ShopMember" id="ShopMemberSelectMap">
+		<id column="member_id" property="memberId"/>
+		<result column="member_name" property="memberName"/>
+		<result column="member_truename" property="memberTruename"/>
+		<result column="member_avatar" property="memberAvatar"/>
+		<result column="member_birthday" property="memberBirthday"/>
+		<result column="member_password" property="memberPassword"/>
+		<result column="password_salt" property="passwordSalt"/>
+		<result column="member_email" property="memberEmail"/>
+		<result column="member_login_num" property="memberLoginNum"/>
+		<result column="member_time" property="memberTime"/>
+		<result column="member_login_time" property="memberLoginTime"/>
+		<result column="member_old_login_time" property="memberOldLoginTime"/>
+		<result column="member_login_ip" property="memberLoginIp"/>
+		<result column="member_old_login_ip" property="memberOldLoginIp"/>
+		<result column="member_points" property="memberPoints"/>
+		<result column="member_mobile" property="memberMobile"/>
+		<result column="available_predeposit" property="availablePredeposit"/>
+		<result column="freeze_predeposit" property="freezePredeposit"/>
+		<result column="inform_allow" property="informAllow"/>
+		<result column="is_buy" property="isBuy"/>
+		<result column="is_allowtalk" property="isAllowtalk"/>
+		<result column="member_state" property="memberState"/>
+		<result column="member_credit" property="memberCredit"/>
+		<result column="member_areaid" property="memberAreaid"/>
+		<result column="member_cityid" property="memberCityid"/>
+		<result column="member_provinceid" property="memberProvinceid"/>
+		<result column="member_areainfo" property="memberAreainfo"/>
+		<result column="is_del" property="isDel"/>
+		<result column="is_sorf" property="isSorf"/>
+	</resultMap>
+	
+</mapper>

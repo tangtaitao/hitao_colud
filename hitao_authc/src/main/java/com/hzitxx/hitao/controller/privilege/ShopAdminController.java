@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -105,7 +105,7 @@ public class ShopAdminController {
 		// 不显示密码
 		shopAdmin.setAdminPassword(null);
 		// 创建一个map集合返回信息
-		Map<String, Object> map = new HashedMap();
+		Map<String, Object> map = new HashMap();
 		// 把登录人信息添加进map中
 		map.put("shopAdmin", shopAdmin);
 		// 添加图片，先写死
