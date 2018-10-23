@@ -7,3 +7,10 @@ target
 classes
 /hitao_member/target
 /hitao_commons/target
+/hitao_fileupload/src/main/resources/*.properties
+/hitao_gatway/*.springBeans
+/hitao_member/*.classpath
+/hitao_member/src/main/resources/*.properties~9a78ef3b0edc13b3a6aaa592fd64ee677dff38c3
+/hitao_member/src/main/resources/*.properties
+/hitao_system/*.springBeans
+/hitao_commons/.classpath
